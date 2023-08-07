@@ -1,5 +1,7 @@
 import { Repository } from "typeorm";
-import { TCarResponse, TUpdateCar } from "../../interface/cars.interface";
+
+import { TCarResponse, TCarUpdate } from "../../interface/cars.interface";
+
 import { Car } from "../../entities/cars.entities";
 import { AppDataSource } from "../../data-source";
 import { carResponseSchema } from "../../schemas/car.schema";

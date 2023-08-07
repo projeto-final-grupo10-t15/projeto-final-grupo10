@@ -9,7 +9,7 @@ export const carSchema = z.object({
   mileage: z.number(),
   color: z.string(),
   FIPE_price: z.number(),
-  price: z.string(),
+  price: z.number(),
   description: z.string(),
   cover_image: z.string(),
   first_image: z.string(),
