@@ -1,11 +1,11 @@
 import { Repository } from "typeorm";
-import { TResponseCar, TUpdateCar } from "../../interface/cars.interface";
+import { TCarResponse, TUpdateCar } from "../../interface/cars.interface";
 import { Car } from "../../entities/cars.entities";
 import { AppDataSource } from "../../data-source";
 import { carResponseSchema } from "../../schemas/car.schema";
 
 export const updateCarrService = async (
-  carData: TCarUpdate,
+  carData: TUpdateCar,
   carId: number
 ): Promise<TCarResponse> => {
   const carRepository: Repository<Car> = AppDataSource.getRepository(Car);
