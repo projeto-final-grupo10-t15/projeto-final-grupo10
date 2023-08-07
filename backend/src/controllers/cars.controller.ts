@@ -16,7 +16,7 @@ export const createCarController = async (
   return response.status(201).json(newCar);
 };
 
-export const getAllUsersController = async (
+export const listAllUsersCArsController = async (
   request: Request,
   response: Response
 ): Promise<Response> => {
@@ -24,24 +24,24 @@ export const getAllUsersController = async (
   return response.json(usersCars);
 };
 
-export const updateUserController = async (
+export const updateCarController = async (
   request: Request,
   response: Response
 ): Promise<Response> => {
   const carData: TCarUpdate = request.body;
   const carId: number = +request.params.id;
-  const updateUser = await updateCarrService(carData, carId);
+  const updateCar = await updateCarrService(carData, carId);
 
-  return response.json(updateUser);
+  return response.json(updateCar);
 };
 
-export const deleteUserController = async (
+export const deleteCarController = async (
   request: Request,
   response: Response
 ): Promise<Response> => {
-  const userId: number = +request.params.id;
+  const carId: number = +request.params.id;
 
-  await deleteUserService(userId);
+  await deleteCarService(carId);
 
   return response.status(204).send();
 };
