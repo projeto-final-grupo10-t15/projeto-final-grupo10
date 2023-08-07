@@ -35,7 +35,7 @@ export const updateCarController = async (
   return response.json(updateCar);
 };
 
-export const deleteCArController = async (
+export const deleteCarController = async (
   request: Request,
   response: Response
 ): Promise<Response> => {
