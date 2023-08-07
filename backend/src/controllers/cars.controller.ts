@@ -18,9 +18,10 @@ export const createCarController = async (
 
 export const listAllUsersCArsController = async (
   request: Request,
-  response: Response
+  response: Response,
+  userId: number
 ): Promise<Response> => {
-  const usersCars = await listUserCarsService();
+  const usersCars = await listUserCarsService(userId);
   return response.json(usersCars);
 };
 
