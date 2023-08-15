@@ -1,9 +1,9 @@
-
-export const App = () =>  {
-
+export const App = () => {
   return (
-    <h1>Ola, mundo</h1>
-  )
-}
+    <>
+      <h1>Ola, mundo</h1>
+    </>
+  );
+};
 
-export default App
+export default App;
