@@ -1,9 +1,5 @@
+export const App = () => {
+  return <></>;
+};
 
-export const App = () =>  {
-
-  return (
-    <h1>Ola, mundo</h1>
-  )
-}
-
-export default App
+export default App;
