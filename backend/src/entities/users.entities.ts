@@ -5,10 +5,13 @@ import {
   OneToMany,
   OneToOne,
   JoinColumn,
+  BeforeInsert,
+  BeforeUpdate,
 } from "typeorm";
 import { Address } from "./addresses.entities";
 import { Car } from "./cars.entities";
 import { Comments } from "./comments.entities";
+import { getRounds, hashSync } from "bcryptjs";
 
 @Entity("users")
 export class User {
@@ -51,4 +54,13 @@ export class User {
 
   @OneToMany(() => Comments, (comments) => comments.user)
   comments: Comments[];
+
+  @BeforeInsert()
+  @BeforeUpdate()
+  hashPass() {
+    const isEncrypted: number = getRounds(this.password);
+    if (!isEncrypted) {
+      this.password = hashSync(this.password, 10);
+    }
+  }
 }
