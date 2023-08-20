@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
-export const GlobalStyles = createGlobalStyle `
+export const GlobalStyles = createGlobalStyle`
 :root{
     --brand1: #4529E6;
     --brand2: #5126EA;
@@ -62,7 +62,7 @@ export const GlobalStyles = createGlobalStyle `
     padding: 0;
     border: none;
     list-style: none;
-    text-decoration:none;
+    text-decoration: none;
     
 }
 
@@ -71,4 +71,4 @@ button{
 }
 
 
-`
+`;
