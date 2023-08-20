@@ -29,15 +29,18 @@ export const Footer = () => {
 export const FooterPages = () => {
   return (
     <StyledFooterPages>
-      <img src="src/assets/seta-para-a-esquerda.png" alt="arrowNext" />
-      <a href="">Anterior </a>
+      <img
+        src="src/assets/angulo-duplo-pequeno-esquerdo.png"
+        alt="arrowPrevious"
+      />
+      <a href="">Anterior</a>
       <div>
-        <a>1</a>
-        <a>de</a>
-        <a>2</a>
+        <span>1</span>
+        <span>de</span>
+        <span>2</span>
       </div>
-      <a href="">Seguinte </a>
-      <img src="src/assets/seta-para-a-direita.png" alt="arrowNext" />
+      <a href="">Seguinte</a>
+      <img src="src/assets/angulo-duplo-pequeno-direito.png" alt="arrowNext" />
     </StyledFooterPages>
   );
 };

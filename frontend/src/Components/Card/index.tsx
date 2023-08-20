@@ -1,144 +1,152 @@
-import { SectionCars } from "../../pages/Home/style";
+import {
+  StyledListCars,
+  StyledSectionCars,
+  StyledCardProduct,
+  StyledDivNameProfile,
+  StyledDivInfosCars,
+  StyledDivChildInfosCar,
+  StyledIconUser,
+} from "../../pages/Home/style";
 
 export const Card = () => {
   return (
-    <SectionCars>
-      <ul>
-        <li>
+    <StyledSectionCars>
+      <StyledListCars>
+        <StyledCardProduct>
           <img src="src/assets/carsTest.png" alt="" />
           <h3>Nome do Carro - Modelo</h3>
           <p>
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem...
           </p>
-          <div className="vendedor">
+          <StyledDivNameProfile>
             <span>R</span>
             <h4>Nome do vendedor</h4>
-          </div>
-          <div>
-            <div>
-              <p>0 Km</p>
-              <p>2019</p>
-            </div>
-            <span>R$ 20.000</span>
-          </div>
-        </li>
-        <li>
-          <img src="src/assets/carsTest.png" alt="" />
-          <h3>Nome do Carro - Modelo</h3>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem...
-          </p>
-          <div className="vendedor">
-            <span>R</span>
-            <h4>Nome do vendedor</h4>
-          </div>
-          <div>
-            <div>
-              <p>0 Km</p>
-              <p>2019</p>
-            </div>
-            <span>R$ 25.000</span>
-          </div>
-        </li>
-        <li>
-          <img src="src/assets/carsTest.png" alt="" />
-          <h3>Nome do Carro - Modelo</h3>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem...
-          </p>
-          <div className="vendedor">
-            <span>R</span>
-            <h4>Nome do vendedor</h4>
-          </div>
-          <div>
-            <div>
-              <p>0 Km</p>
-              <p>2019</p>
-            </div>
+          </StyledDivNameProfile>
+          <StyledDivInfosCars>
+            <StyledDivChildInfosCar>
+              <StyledIconUser>0 Km</StyledIconUser>
+              <StyledIconUser>2019</StyledIconUser>
+            </StyledDivChildInfosCar>
             <p>R$ 20.000</p>
-          </div>
-        </li>
-        <li>
+          </StyledDivInfosCars>
+        </StyledCardProduct>
+        <StyledCardProduct>
           <img src="src/assets/carsTest.png" alt="" />
           <h3>Nome do Carro - Modelo</h3>
           <p>
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem...
           </p>
-          <div className="vendedor">
+          <StyledDivNameProfile>
             <span>R</span>
             <h4>Nome do vendedor</h4>
-          </div>
-          <div>
-            <div>
-              <p>0 Km</p>
-              <p>2019</p>
-            </div>
-            <p>R$ 20.000</p>
-          </div>
-        </li>
-        <li>
+          </StyledDivNameProfile>
+          <StyledDivInfosCars>
+            <StyledDivChildInfosCar>
+              <StyledIconUser>0 Km</StyledIconUser>
+              <StyledIconUser>2019</StyledIconUser>
+            </StyledDivChildInfosCar>
+            <p>R$ 25.000</p>
+          </StyledDivInfosCars>
+        </StyledCardProduct>
+        <StyledCardProduct>
           <img src="src/assets/carsTest.png" alt="" />
           <h3>Nome do Carro - Modelo</h3>
           <p>
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem...
           </p>
-          <div className="vendedor">
+          <StyledDivNameProfile>
             <span>R</span>
             <h4>Nome do vendedor</h4>
-          </div>
-          <div>
-            <div>
-              <p>0 Km</p>
-              <p>2019</p>
-            </div>
+          </StyledDivNameProfile>
+          <StyledDivInfosCars>
+            <StyledDivChildInfosCar>
+              <StyledIconUser>0 Km</StyledIconUser>
+              <StyledIconUser>2019</StyledIconUser>
+            </StyledDivChildInfosCar>
             <p>R$ 20.000</p>
-          </div>
-        </li>
-        <li>
+          </StyledDivInfosCars>
+        </StyledCardProduct>
+        <StyledCardProduct>
           <img src="src/assets/carsTest.png" alt="" />
           <h3>Nome do Carro - Modelo</h3>
           <p>
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem...
           </p>
-          <div className="vendedor">
+          <StyledDivNameProfile>
             <span>R</span>
             <h4>Nome do vendedor</h4>
-          </div>
-          <div>
-            <div>
-              <p>0 Km</p>
-              <p>2019</p>
-            </div>
+          </StyledDivNameProfile>
+          <StyledDivInfosCars>
+            <StyledDivChildInfosCar>
+              <StyledIconUser>0 Km</StyledIconUser>
+              <StyledIconUser>2019</StyledIconUser>
+            </StyledDivChildInfosCar>
             <p>R$ 20.000</p>
-          </div>
-        </li>
-        <li>
+          </StyledDivInfosCars>
+        </StyledCardProduct>
+        <StyledCardProduct>
           <img src="src/assets/carsTest.png" alt="" />
           <h3>Nome do Carro - Modelo</h3>
           <p>
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem...
           </p>
-          <div className="vendedor">
+          <StyledDivNameProfile>
             <span>R</span>
             <h4>Nome do vendedor</h4>
-          </div>
-          <div>
-            <div>
-              <p>0 Km</p>
-              <p>2019</p>
-            </div>
+          </StyledDivNameProfile>
+          <StyledDivInfosCars>
+            <StyledDivChildInfosCar>
+              <StyledIconUser>0 Km</StyledIconUser>
+              <StyledIconUser>2019</StyledIconUser>
+            </StyledDivChildInfosCar>
             <p>R$ 20.000</p>
-          </div>
-        </li>
-      </ul>
-    </SectionCars>
+          </StyledDivInfosCars>
+        </StyledCardProduct>
+        <StyledCardProduct>
+          <img src="src/assets/carsTest.png" alt="" />
+          <h3>Nome do Carro - Modelo</h3>
+          <p>
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem...
+          </p>
+          <StyledDivNameProfile>
+            <span>R</span>
+            <h4>Nome do vendedor</h4>
+          </StyledDivNameProfile>
+          <StyledDivInfosCars>
+            <StyledDivChildInfosCar>
+              <StyledIconUser>0 Km</StyledIconUser>
+              <StyledIconUser>2019</StyledIconUser>
+            </StyledDivChildInfosCar>
+            <p>R$ 20.000</p>
+          </StyledDivInfosCars>
+        </StyledCardProduct>
+        <StyledCardProduct>
+          <img src="src/assets/carsTest.png" alt="" />
+          <h3>Nome do Carro - Modelo</h3>
+          <p>
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem...
+          </p>
+          <StyledDivNameProfile>
+            <span>R</span>
+            <h4>Nome do vendedor</h4>
+          </StyledDivNameProfile>
+          <StyledDivInfosCars>
+            <StyledDivChildInfosCar>
+              <StyledIconUser>0 Km</StyledIconUser>
+              <StyledIconUser>2019</StyledIconUser>
+            </StyledDivChildInfosCar>
+            <p>R$ 20.000</p>
+          </StyledDivInfosCars>
+        </StyledCardProduct>
+      </StyledListCars>
+    </StyledSectionCars>
   );
 };
 
