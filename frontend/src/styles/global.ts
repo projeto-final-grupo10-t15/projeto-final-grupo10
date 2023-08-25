@@ -52,6 +52,7 @@ export const GlobalStyles = createGlobalStyle`
     --font-heading6-500: 500;
     --font-heading7-600: 600;
     --font-heading7-500: 500;
+    
 
 
 }
@@ -60,10 +61,16 @@ export const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    border: none;
     list-style: none;
-    text-decoration: none;
+
+    text-decoration:none;
+   
+
     
+}
+body,html{
+    width:100%;
+    height: 100%;
 }
 
 button{

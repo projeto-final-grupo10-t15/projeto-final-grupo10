@@ -7,4 +7,5 @@ export interface IInputProps extends InputHTMLAttributes<HTMLInputElement>{
     type: "text" | "email" | "password"
     register?: UseFormRegisterReturn<string>
     error?: FieldError
+    placeholder: string
 }
