@@ -1,4 +1,4 @@
-import Footer from "../../Components/Footer/Footer"
+import { Footer } from "../../Components/Footer/Footer"
 import Header from "../../Components/Header/Header"
 import { RegisterForm } from "../../Components/RegisterForm"
 

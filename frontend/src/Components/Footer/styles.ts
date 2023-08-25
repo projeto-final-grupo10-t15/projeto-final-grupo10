@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-export const StyledFooter = styled.footer`
+const StyledFooter = styled.footer`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -48,3 +48,31 @@ export const StyledFooter = styled.footer`
     }
   }
 `;
+
+const StyledFooterPages = styled.footer`
+  width: 100%;
+  height: 50px;
+  max-height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+
+  img {
+    width: 30px;
+    cursor: pointer;
+  }
+  a {
+    cursor: pointer;
+  }
+
+  div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+  }
+`;
+
+export { StyledFooter, StyledFooterPages };
