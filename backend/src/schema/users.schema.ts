@@ -13,6 +13,10 @@ export const userSchema = z.object({
   account_type: z.string(),
 });
 
+export const userUpdateRequestSchema = userSchema.omit({id:true, password: true, profile_image: true, contact_number: true, account_type: true})
+
+export const userUpdateResponseSchema = userSchema.omit({ password: true, profile_image: true, contact_number: true})
+
 export const userRequestSchema = userSchema.omit({ id: true });
 
 export const userResponseSchema = userSchema;
