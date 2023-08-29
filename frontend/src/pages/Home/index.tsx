@@ -6,6 +6,7 @@ import {
   StyledMainHome,
   StyledPrimarySectionHome,
   StyledArticlePrimary,
+  StyledImagePrimaryHome,
 } from "./style";
 
 export const Home = () => {
@@ -14,7 +15,7 @@ export const Home = () => {
       <Header />
       <StyledMainHome>
         <StyledPrimarySectionHome>
-          <img src="src/assets/Car_Primary.png" alt="" />
+          <StyledImagePrimaryHome src="src/assets/Car_Primary.png" />
         </StyledPrimarySectionHome>
         <StyledArticlePrimary>
           <AsideFilter />

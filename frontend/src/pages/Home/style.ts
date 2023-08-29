@@ -3,22 +3,25 @@ import { styled } from "styled-components";
 const StyledMainHome = styled.main`
   width: 100%;
   height: 100%;
+  max-height: max-content;
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 20px;
   background-color: var(--whiteFixed);
 `;
 
 const StyledPrimarySectionHome = styled.section`
   width: 100%;
-  max-height: 540px;
   height: 100%;
+  max-height: 540px;
+`;
 
-  img {
-    max-height: 540px;
-    width: 100%;
-    height: 100%;
-  }
+const StyledImagePrimaryHome = styled.img`
+  src: url(${(props) => props.src});
+  max-height: 540px;
+  width: 100%;
+  height: 100%;
 `;
 
 const StyledArticlePrimary = styled.article`
@@ -33,6 +36,7 @@ const StyledArticlePrimary = styled.article`
 `;
 
 const StyledSectionCars = styled.section`
+  display: flex;
   width: 100%;
   height: 100%;
   background-color: var(--whiteFixed);
@@ -40,6 +44,8 @@ const StyledSectionCars = styled.section`
 `;
 
 const StyledListCars = styled.ul`
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: row;
   gap: 30.5px;
@@ -112,6 +118,7 @@ const StyledIconUser = styled.p`
 export {
   StyledMainHome,
   StyledPrimarySectionHome,
+  StyledImagePrimaryHome,
   StyledArticlePrimary,
   StyledSectionCars,
   StyledListCars,
