@@ -52,8 +52,6 @@ export const GlobalStyles = createGlobalStyle`
     --font-heading6-500: 500;
     --font-heading7-600: 600;
     --font-heading7-500: 500;
-
-
 }
 
 *{
@@ -63,6 +61,7 @@ export const GlobalStyles = createGlobalStyle`
     border: none;
     list-style: none;
     text-decoration: none;
+    font-family: 'Lexend', sans-serif;
     
 }
 

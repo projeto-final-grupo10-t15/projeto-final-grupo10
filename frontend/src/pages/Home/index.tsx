@@ -2,21 +2,26 @@ import { AsideFilter } from "../../Components/Aside";
 import Card from "../../Components/Card";
 import { FooterPages } from "../../Components/Footer/Footer";
 import Header from "../../Components/Header/Header";
-import { ArticlePrimary, MainHome, PrimarySectionHome } from "./style";
+import {
+  StyledMainHome,
+  StyledPrimarySectionHome,
+  StyledArticlePrimary,
+  StyledImagePrimaryHome,
+} from "./style";
 
 export const Home = () => {
   return (
     <>
       <Header />
-      <MainHome>
-        <PrimarySectionHome>
-          <img src="src/assets/Content.png" alt="" />
-        </PrimarySectionHome>
-        <ArticlePrimary>
+      <StyledMainHome>
+        <StyledPrimarySectionHome>
+          <StyledImagePrimaryHome src="src/assets/Car_Primary.png" />
+        </StyledPrimarySectionHome>
+        <StyledArticlePrimary>
           <AsideFilter />
           <Card />
-        </ArticlePrimary>
-      </MainHome>
+        </StyledArticlePrimary>
+      </StyledMainHome>
       <FooterPages />
     </>
   );

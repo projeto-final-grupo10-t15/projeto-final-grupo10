@@ -63,8 +63,19 @@ const StyledFooterPages = styled.footer`
     width: 30px;
     cursor: pointer;
   }
+
   a {
+    color: var(--brand2);
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  span {
+    font-size: 16px;
+    font-weight: 600;
     cursor: pointer;
+    text-decoration: none;
+    color: var(--grey4);
   }
 
   div {
