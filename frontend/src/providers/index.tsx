@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { IUser, IUserContext, IUserLogin, IUserProviderProps, IUserRegister, LoginResponse } from "./interfaces";
+import { IUser, IUserContext, IUserLogin, IUserProviderProps, IUserRegister, IUserUpdate, LoginResponse } from "./interfaces";
 import { useNavigate } from "react-router-dom";
 import { api } from "../services/api";
 
@@ -27,6 +27,7 @@ export const UserProvider = ({children}:IUserProviderProps) =>{
             const {token} = response.data
             api.defaults.headers.common.Authorization = `Bearer ${token}`
             localStorage.setItem("@TOKEN", token)
+            localStorage.setItem('@ID', response.data.id!)
             setLoading(false)
             navigate("/")
         }
@@ -45,8 +46,26 @@ export const UserProvider = ({children}:IUserProviderProps) =>{
             console.log(error)
         }
     }
+
+    const logout = ():void =>{
+        localStorage.removeItem('@TOKEN')
+        setUser(null)
+        navigate('/')
+    }
+
+    const updateUser = async (data:IUserUpdate):Promise<void> =>{
+        const token = localStorage.getItem('@TOKEN')
+        const id = localStorage.getItem('@ID')
+        try {
+            const response = await api.patch(`/users/ ${id}`,data)
+            api.defaults.headers.common.Authorization = `Bearer ${token}`
+            setUser(response.data)
+        } catch (error) {
+            console.log(error)
+        }
+    }
     return(
-        <UserContext.Provider value={{loginUser,loading,registerUser}}>
+        <UserContext.Provider value={{loginUser,loading,registerUser,logout,updateUser,user}}>
             {children}
         </UserContext.Provider>
     )

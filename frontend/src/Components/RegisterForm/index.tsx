@@ -6,6 +6,7 @@ import { Input } from "../Input"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Link } from "react-router-dom"
 import { RegisterData, RegisterSchema } from "../../pages/Register/schema"
+import { StyledRegisterForm } from "./styles"
 
 export const RegisterForm = () =>{
     const {registerUser} = useContext(UserContext)
@@ -25,7 +26,9 @@ export const RegisterForm = () =>{
         registerUser(data)
     }
         return(
-           <main>
+           <StyledRegisterForm>
+            <div className="register__container">
+
                <h2>Cadastro</h2>
                <p>Informações pessoais</p>
                <form onSubmit={handleSubmit(submit)}>
@@ -118,8 +121,10 @@ export const RegisterForm = () =>{
                         type="text"
                         id="complement"
                     />
-                    <label>
-                        <input
+                    <p>Tipo de conta</p>
+                    <div className="choice__container">
+                    <label className={`choice ${userType === "comprador" ? "selected" : ""}`}>
+                        <input 
                             type="radio"
                             value="Comprador"
                             checked={userType === "comprador"}
@@ -129,8 +134,8 @@ export const RegisterForm = () =>{
                         />
                         Comprador
                     </label>
-                    <label>
-                        <input
+                    <label className={`choice ${userType === "anunciante" ? "selected" : ""}`}>
+                        <input 
                             type="radio"
                             value="Anunciante"
                             checked={userType === "Anunciante"}
@@ -139,6 +144,7 @@ export const RegisterForm = () =>{
                         />
                         Anunciante
                     </label>
+                    </div>
                     <Input
                         label="Senha"
                         placeholder="Digitar senha"
@@ -156,10 +162,11 @@ export const RegisterForm = () =>{
                     />
                     {password !== confirmPassword && <p>As senhas não coincidem</p>}
                     <Link to="/login">
-                        <button type="submit">Finalizar cadastro</button>
+                        <button className="submitBtn" type="submit">Finalizar cadastro</button>
                     </Link>
                </form> 
-           </main>
+            </div>
+           </StyledRegisterForm>
         )
 
     }
