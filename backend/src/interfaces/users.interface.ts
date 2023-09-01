@@ -1,5 +1,6 @@
 import { z } from "zod";
 import {
+  addressSchemaRequest,
   userRequestSchema,
   userResponseSchema,
   userSchema,
@@ -21,3 +22,5 @@ export type TUsersResponse = z.infer<typeof usersResponseSchema>;
 export type TUserUpdateRequest = z.infer<typeof userUpdateRequestSchema>
 
 export type TUserUpdateResponse = z.infer<typeof userUpdateResponseSchema>
+
+export type TAddressRequest = z.infer<typeof addressSchemaRequest>

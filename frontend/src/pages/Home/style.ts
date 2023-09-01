@@ -14,6 +14,7 @@ const PrimarySectionHome = styled.section`
   width: 100%;
   max-height: 540px;
   height: 100%;
+  
 
   img {
     max-height: 540px;
@@ -71,7 +72,7 @@ const AsideFilterStyled = styled.aside`
 const SectionCars = styled.section`
   width: 100%;
   height: 100%;
-  background-color: var(--whiteFixed);
+  background-color: var(--grey8);;
   padding: 0 0 0 20px;
 
   ul {
