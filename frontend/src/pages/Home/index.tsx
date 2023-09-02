@@ -9,7 +9,7 @@ import {
   StyledImagePrimaryHome,
 } from "./style";
 
-export const Home = () => {
+export const HomePage = () => {
   return (
     <>
       <Header />
