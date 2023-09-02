@@ -1,14 +1,14 @@
-import { UserProvider } from "./providers";
+import { UserProvider } from "./Contexts/User";
 import { RoutesMain } from "./routes";
 
 export const App = () => {
   return (
     <>
       <UserProvider>
-        <RoutesMain/>
+        <RoutesMain />
       </UserProvider>
     </>
-  )
+  );
 };
 
 export default App;
