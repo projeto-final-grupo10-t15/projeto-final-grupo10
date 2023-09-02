@@ -78,6 +78,10 @@ const StyledFooterPages = styled.footer`
     color: var(--grey4);
   }
 
+  span:hover {
+    color: var(--grey3);
+  }
+
   div {
     display: flex;
     flex-direction: row;
