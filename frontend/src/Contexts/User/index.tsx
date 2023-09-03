@@ -29,6 +29,16 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
     setLoading(false);
   }, []);
 
+  const registerUser = async (data: IUserRegister): Promise<void> => {
+    try {
+      const response = await api.post("/users", data);
+      setUser(response.data.user);
+      navigate("/login");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  
   const loginUser = async (data: IUserLogin): Promise<void> => {
     try {
       const response = await api.post<LoginResponse>("/login", data);
@@ -38,16 +48,6 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
       localStorage.setItem("@ID", response.data.id!);
       setLoading(false);
       navigate("/");
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const registerUser = async (data: IUserRegister): Promise<void> => {
-    try {
-      const response = await api.post("/users", data);
-      setUser(response.data.user);
-      navigate("/login");
     } catch (error) {
       console.log(error);
     }
