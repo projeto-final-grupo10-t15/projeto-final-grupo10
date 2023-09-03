@@ -1,11 +1,12 @@
 import { SectionCars } from "../../pages/Home/style";
+import CarsImg from "../../assets/carsTest.png";
 
 export const Card = () => {
   return (
     <SectionCars>
       <ul>
         <li>
-          <img src="src/assets/carsTest.png" alt="" />
+          <img src={CarsImg} alt="" />
           <h3>Nome do Carro - Modelo</h3>
           <p>
             Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -24,7 +25,7 @@ export const Card = () => {
           </div>
         </li>
         <li>
-          <img src="src/assets/carsTest.png" alt="" />
+          <img src={CarsImg} alt="" />
           <h3>Nome do Carro - Modelo</h3>
           <p>
             Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -43,7 +44,7 @@ export const Card = () => {
           </div>
         </li>
         <li>
-          <img src="src/assets/carsTest.png" alt="" />
+          <img src={CarsImg} alt="" />
           <h3>Nome do Carro - Modelo</h3>
           <p>
             Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -62,7 +63,7 @@ export const Card = () => {
           </div>
         </li>
         <li>
-          <img src="src/assets/carsTest.png" alt="" />
+          <img src={CarsImg} alt="" />
           <h3>Nome do Carro - Modelo</h3>
           <p>
             Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -81,7 +82,7 @@ export const Card = () => {
           </div>
         </li>
         <li>
-          <img src="src/assets/carsTest.png" alt="" />
+          <img src={CarsImg} alt="" />
           <h3>Nome do Carro - Modelo</h3>
           <p>
             Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -100,7 +101,7 @@ export const Card = () => {
           </div>
         </li>
         <li>
-          <img src="src/assets/carsTest.png" alt="" />
+          <img src={CarsImg} alt="" />
           <h3>Nome do Carro - Modelo</h3>
           <p>
             Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -119,7 +120,7 @@ export const Card = () => {
           </div>
         </li>
         <li>
-          <img src="src/assets/carsTest.png" alt="" />
+          <img src={CarsImg} alt="" />
           <h3>Nome do Carro - Modelo</h3>
           <p>
             Lorem Ipsum is simply dummy text of the printing and typesetting
