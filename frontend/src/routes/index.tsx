@@ -12,7 +12,6 @@ export const RoutesMain = () => {
       <Route path="/register" element={<Register />} />
       <Route path="/" element={<HomePage />} />
       <Route path="/user" element={<UserPage />} />
-
       <Route path="/adm" element={<Anunciante/>}/>
     </Routes>
   );
