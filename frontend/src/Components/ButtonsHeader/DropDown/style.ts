@@ -8,6 +8,7 @@ export const DropdownContainer = styled.div<{ show: boolean }>`
   width: 100vw;
   background-color: #fff;
   height: 20vh;
+  z-index: 1;
 `;
 
 export default { DropdownContainer };

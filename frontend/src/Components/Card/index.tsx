@@ -1,11 +1,5 @@
 import { StyledDivNameProfile, StyledIconUser } from "../../pages/Home/style";
-import {
-  StyledCardProduct,
-  StyledDivChildInfosCar,
-  StyledDivInfosCars,
-  StyledListCars,
-  StyledSectionCars,
-} from "./style";
+import { StyledCardProduct, StyledDivChildInfosCar, StyledDivInfosCars, StyledListCars, StyledSectionCars } from "./style";
 
 export const Card = () => {
   return (
