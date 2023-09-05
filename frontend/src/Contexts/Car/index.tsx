@@ -1,12 +1,12 @@
 import { createContext, useEffect, useState } from "react";
-import { iCars, iChildren } from "./interfaces";
+import { ICars, iChildren } from "./interfaces";
 import { api } from "../../services/api";
 
 type CarContextProps = {
-  car: iCars[] | [];
-  setCar: React.Dispatch<React.SetStateAction<iCars[] | []>>;
-  createCar: (id: number | null, formData: iCars) => void;
-  updateCar: (id: number | null, formData: iCars) => void;
+  car: ICars[] | [];
+  setCar: React.Dispatch<React.SetStateAction<ICars[] | []>>;
+  createCar: (id: number | null, formData: ICars) => void;
+  updateCar: (id: number | null, formData: ICars) => void;
   listMyCars: (id: number | null) => void;
   listAllCars: () => void;
 };
@@ -14,7 +14,7 @@ type CarContextProps = {
 const CarContext = createContext<CarContextProps>({} as CarContextProps);
 
 const CarProvider = ({ children }: iChildren) => {
-  const [car , setCar] = useState<iCars[] | []>([]);
+  const [car , setCar] = useState<ICars[] | []>([]);
 
   useEffect(() => {
     const Cars = async () => {
@@ -28,7 +28,7 @@ const CarProvider = ({ children }: iChildren) => {
     Cars();
   }, []);
 
-  const createCar = async (id: number | null, data: iCars) => {
+  const createCar = async (id: number | null, data: ICars) => {
     const token = localStorage.getItem("@TOKEN");
     try {
       const response = await api.post(`/cars/${id}`, data, {
@@ -65,7 +65,7 @@ const CarProvider = ({ children }: iChildren) => {
     }
   }
 
-  const updateCar = async (id: number | null, data: iCars) => {
+  const updateCar = async (id: number | null, data: ICars) => {
     const token = localStorage.getItem("@TOKEN");
     try {
       const response = await api.patch(`/cars/${id}`, data, {
