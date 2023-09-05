@@ -7,6 +7,8 @@ type adContextProps = {
   setAd: React.Dispatch<React.SetStateAction<iAds[] | []>>;
   createAd: (id: number | null, formData: iAds) => void;
   updateAd: (id: number | null, formData: iAds) => void;
+  listMyAds: (id: number | null) => void;
+  listAllAds: () => void;
 };
 
 const AdContext = createContext<adContextProps>({} as adContextProps);
@@ -40,6 +42,29 @@ const AdProvider = ({ children }: iChildren) => {
     }
   };
 
+  const listAllAds = async () => {
+    try {
+      const response = await api.get("/ads")
+      setAd(response.data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const listMyAds = async (id: number | null) => {
+    const token = localStorage.getItem("@TOKEN")
+    try {
+      const response = await api.get(`/ads/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      setAd(response.data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   const updateAd = async (id: number | null, data: iAds) => {
     const token = localStorage.getItem("@TOKEN");
     try {
@@ -61,7 +86,7 @@ const AdProvider = ({ children }: iChildren) => {
     }
   };
   return (
-    <AdContext.Provider value={{ ad, setAd, createAd, updateAd }}>
+    <AdContext.Provider value={{ ad, setAd, createAd, updateAd, listMyAds, listAllAds }}>
       {children}
     </AdContext.Provider>
   );
