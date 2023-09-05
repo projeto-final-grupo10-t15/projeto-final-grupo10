@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { AsideFilter } from "../../Components/Aside";
 import Card from "../../Components/Card";
 import { FooterPages } from "../../Components/Footer/Footer";
