@@ -4,7 +4,6 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { IUserRegister } from "../../Contexts/User/interfaces";
 import { Input } from "../Input";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Link } from "react-router-dom";
 import { RegisterData, RegisterSchema } from "../../pages/Register/schema";
 import { StyledRegisterForm } from "./styles";
 
@@ -26,7 +25,8 @@ export const RegisterForm = () => {
   };
 
   const submit: SubmitHandler<IUserRegister> = (data) => {
-    data.type_account = userType;
+   
+    data.account_type = userType;
     registerUser(data);
   };
   return (
@@ -71,83 +71,97 @@ export const RegisterForm = () => {
             label="Data de nascimento"
             placeholder="00/00/00"
             register={register("birthdate")}
-            type="text"
+            type="date"
+            pattern="\d{4}-\d{2}-\d{2}"
             id="birthdate"
           />
           <Input
             label="Descrição"
-            placeholder="Degitar descrição"
+            placeholder="Digitar descrição"
             register={register("description")}
             type="text"
             id="description"
+          />
+          <Input
+          label="Imagem de perfil"
+          placeholder="URL da imagem"
+          register={register("profile_image")}
+          type="text"
+          id="profile_image"
           />
           <p>Informações de endereço</p>
           <Input
             label="CEP"
             placeholder="00000.000"
-            register={register("zipCode")}
+            register={register("address.zipCode")}
             type="text"
             id="zipcode"
           />
           <Input
             label="Estado"
             placeholder="Digitar Estado"
-            register={register("state")}
+            register={register("address.estate")}
             type="text"
             id="state"
           />
           <Input
             label="Cidade"
             placeholder="Digitar cidade"
-            register={register("city")}
+            register={register("address.city")}
             type="text"
             id="city"
           />
           <Input
             label="Rua"
             placeholder="Digitar rua"
-            register={register("street")}
+            register={register("address.street")}
             type="text"
             id="street"
           />
           <Input
             label="Número"
             placeholder="Digitar número"
-            register={register("number")}
+            register={register("address.number")}
             type="text"
             id="number"
           />
           <Input
             label="Complemento"
             placeholder="Ex: ap 101"
-            register={register("complement")}
+            register={register("address.complement")}
             type="text"
             id="complement"
           />
           <p>Tipo de conta</p>
           <div className="choice__container">
             <label
-              className={`choice ${userType === "comprador" ? "selected" : ""}`}
+            htmlFor="buyer"
+              className={`choice ${userType === "Comprador" ? "selected" : ""}`}
             >
               <input
+                id="buyer"
                 type="radio"
                 value="Comprador"
-                checked={userType === "comprador"}
-                {...register("type_account")}
+                defaultChecked
+                checked={userType === "Comprador"}
+                {...register("account_type")}
                 onChange={handleUserTypeChange}
                 name="userType"
               />
               Comprador
             </label>
             <label
+            htmlFor="announcer"
               className={`choice ${
-                userType === "anunciante" ? "selected" : ""
+                userType === "Anunciante" ? "selected" : ""
               }`}
             >
               <input
+                id="announcer"
                 type="radio"
                 value="Anunciante"
                 checked={userType === "Anunciante"}
+                {...register("account_type")}
                 onChange={handleUserTypeChange}
                 name="userType"
               />
@@ -170,11 +184,11 @@ export const RegisterForm = () => {
             id="confirmPass"
           />
           {password !== confirmPassword && <p>As senhas não coincidem</p>}
-          <Link to="/login">
+          
             <button className="submitBtn" type="submit">
               Finalizar cadastro
             </button>
-          </Link>
+          
         </form>
       </div>
     </StyledRegisterForm>

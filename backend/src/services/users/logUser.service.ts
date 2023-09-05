@@ -36,5 +36,5 @@ export const createTokenService = async (loginData: tLoginData) => {
         subject: String(user.id)
     })
 
-    return token
+    return {token, id:user.id}
 }

@@ -7,7 +7,7 @@ const settings = (): DataSourceOptions => {
   const migrationPath: string = path.join(__dirname, "./migrations/**.{ts,js}");
   const nodeEnv: string = process.env.NODE_ENV!;
 
-  if (nodeEnv === "test") {
+  if (nodeEnv === "production") {
     return {
       type: "sqlite",
       database: ":memory:",
