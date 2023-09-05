@@ -19,23 +19,23 @@ export class Car {
   @Column({ type: "varchar" })
   model: string;
 
-  @Column({ type: "number" })
+  @Column({ type: "int" })
   year: number;
 
   @Column({ type: "varchar" }) // ENUM
   fuel_type: string;
 
-  @Column({ type: "number" })
+  @Column({ type: "int" })
   mileage: number;
 
   @Column({ type: "varchar" })
   color: string;
 
   @Column({ type: "decimal", precision: 10, scale: 2 })
-  FIPE_price: number;
+  FIPE_price: number | string;
 
   @Column({ type: "decimal", precision: 10, scale: 2 })
-  price: number;
+  price: number | string;
 
   @Column({ type: "varchar" })
   description: string;

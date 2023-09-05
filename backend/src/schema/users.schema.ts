@@ -21,15 +21,29 @@ export const userSchema = z.object({
   profile_image: z.string(),
   description: z.string(),
   cpf: z.string(),
-  bitrhdate: z.string(),
+  birthdate: z.coerce.date(),
   contact_number: z.string(),
   account_type: z.string(),
   address: addressSchema
 });
 
-export const userUpdateRequestSchema = userSchema.partial()
+export const userUpdateRequestSchema = z.object({
+  name: z.string(),
+  email: z.string().email(),
+  description: z.string(),
+  cpf: z.string(),
+  birthdate: z.date(),
+  contact_number: z.string(),
+}).partial()
 
-export const userUpdateResponseSchema = userSchema.omit({ password: true, profile_image: true, contact_number: true})
+export const userUpdateResponseSchema = userSchema.omit({
+   id:true,
+   password: true,
+   profile_image:true,
+   account_type:true,
+   address:true,
+  
+  })
 
 export const userRequestSchema = userSchema.omit({
    id: true 
@@ -38,6 +52,8 @@ export const userRequestSchema = userSchema.omit({
     address:addressSchemaRequest
   });
 
-export const userResponseSchema = userSchema;
+export const userResponseSchema = userSchema.omit({
+  password:true
+});
 
 export const usersResponseSchema = userResponseSchema.array();

@@ -11,6 +11,7 @@ import {
   usersResponseSchema,
 } from "../schema/users.schema";
 
+
 export type TUser = z.infer<typeof userSchema>;
 
 export type TUserResponse = z.infer<typeof userResponseSchema>;
