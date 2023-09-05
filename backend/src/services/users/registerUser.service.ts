@@ -14,7 +14,10 @@ export const createuserService = async (userData: TUserRequest): Promise<TUserRe
     ...addressData
   })
   await addressRepository.save(addressCreate)
-  const user: User = userRepository.create(userData);
+  const user: User = userRepository.create({
+    ...userData,
+    address:addressCreate
+  });
 
   await userRepository.save(user);
 
