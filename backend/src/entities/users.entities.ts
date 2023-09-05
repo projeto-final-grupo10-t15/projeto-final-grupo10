@@ -37,7 +37,7 @@ export class User {
   cpf: string;
 
   @Column({ type: "date" })
-  birthdate: Date;
+  birthdate: string|Date;
 
   @Column({ type: "varchar" })
   contact_number: string;
