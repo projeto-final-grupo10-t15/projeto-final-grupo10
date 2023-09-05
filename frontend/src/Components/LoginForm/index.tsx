@@ -24,8 +24,8 @@ export const LoginForm = () => {
   return (
     <StyledLoginForm>
       <div className="login__container">
-        <h2>Login</h2>
         <form onSubmit={handleSubmit(submit)}>
+          <h2>Login</h2>
           <Input
             label="Email"
             placeholder="Digitar email"

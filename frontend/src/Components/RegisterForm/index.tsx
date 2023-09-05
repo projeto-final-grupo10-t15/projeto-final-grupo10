@@ -32,9 +32,9 @@ export const RegisterForm = () => {
   return (
     <StyledRegisterForm>
       <div className="register__container">
-        <h2>Cadastro</h2>
-        <p>Informações pessoais</p>
         <form onSubmit={handleSubmit(submit)}>
+          <h2>Cadastro</h2>
+          <p>Informações pessoais</p>
           <Input
             label="Nome"
             placeholder="Ex: Lucas Ribeiro"

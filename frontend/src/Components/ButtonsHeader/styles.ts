@@ -8,7 +8,7 @@ export const StyledButton = styled.button`
   height: fit-content;
   border-left: 0.1rem solid var(--grey6);
   flex-direction: column;
-  width: 100vw;
+  width: 100%;
   .loginButton {
     display: flex;
     height: 3rem;
