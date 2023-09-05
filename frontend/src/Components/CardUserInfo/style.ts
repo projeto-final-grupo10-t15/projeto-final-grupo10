@@ -2,7 +2,7 @@ import { styled } from "styled-components";
 
 export const CardUserInfoContainer = styled.div`
   display: flex;
-  width: 100vw;
+  width: 100%;
   flex-direction: column;
   align-items: flex-start;
 

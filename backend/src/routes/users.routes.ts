@@ -7,7 +7,7 @@ import { validateToken } from "../middlewares/validateMiddlewares/validateToken.
 import { updateUserController } from "../controllers/users.controller";
 import { verifyIdExists } from "../middlewares/verifyMiddlewares/verifyIdExists.middlewate";
 
-export const userRoutes = Router()
+export const userRoutes:Router = Router()
 
 userRoutes.post('',validateRequestBody(userRequestSchema),verifyEmailExists,createUserController)
 userRoutes.patch('/:id',validateToken,validateRequestBody(userUpdateRequestSchema),updateUserController)

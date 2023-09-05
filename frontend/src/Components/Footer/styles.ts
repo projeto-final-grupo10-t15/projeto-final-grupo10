@@ -8,7 +8,7 @@ const StyledFooter = styled.footer`
   gap: 1rem;
   background: var(--grey0);
   padding: 1rem 0;
-  width: 100vw;
+  width: 100%;
   height: fit-content;
 
   .footer__logo {

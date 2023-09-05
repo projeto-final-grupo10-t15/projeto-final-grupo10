@@ -1,8 +1,9 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { Login } from "../pages/Login";
 import { Register } from "../pages/Register";
 import { HomePage } from "../pages/Home";
 import { UserPage } from "../pages/User";
+
 import Anunciante from "../pages/Adm";
 
 export const RoutesMain = () => {
@@ -13,6 +14,7 @@ export const RoutesMain = () => {
       <Route path="/" element={<HomePage />} />
       <Route path="/user" element={<UserPage />} />
       <Route path="/adm" element={<Anunciante/>}/>
+      <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );
 };

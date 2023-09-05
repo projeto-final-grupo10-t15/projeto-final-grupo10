@@ -3,6 +3,7 @@ import {
   StyledListAside,
   StyledAsideInfosCard,
 } from "../../Components/Aside/styled";
+import { Input } from "../Input";
 
 export const AsideFilter = () => {
   return (
@@ -53,11 +54,11 @@ export const AsideFilter = () => {
         </StyledListAside>
         <div>
           <h2>Km</h2>
-          <p>Filtro slicing </p>
+          <Input id="id" type="range" min="0" max="10" />
         </div>
         <div>
           <h2>Preço</h2>
-          <p>Filtro slicing</p>
+          <Input id="id" type="range" min="0" max="10" />
         </div>
       </StyledAsideFilter>
     </>
