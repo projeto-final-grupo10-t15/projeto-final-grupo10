@@ -2,7 +2,7 @@ export interface iChildren {
     children: React.ReactNode;
 }
 
-export interface iAds {
+export interface iCars {
     id: number;
     // name: string;
     // estado: string;

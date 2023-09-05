@@ -8,7 +8,7 @@ const StyledAsideFilter = styled.aside`
   max-width: 100%;
   height: 100%;
   background-color: var(--whiteFixed);
-  padding: 60px 10px;
+  padding: 40px 10px;
 
   ul > li > h2 {
     margin-bottom: 15px;
