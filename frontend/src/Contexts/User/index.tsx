@@ -42,10 +42,12 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
   const loginUser = async (data: IUserLogin): Promise<void> => {
     try {
       const response = await api.post<LoginResponse>("/login", data);
-      const { token } = response.data;
+      
+      const { token, id } = response.data;
+      
       api.defaults.headers.common.Authorization = `Bearer ${token}`;
       localStorage.setItem("@TOKEN", token);
-      localStorage.setItem("@ID", response.data.id!);
+      localStorage.setItem("@ID", id!);
       setLoading(false);
       navigate("/");
     } catch (error) {

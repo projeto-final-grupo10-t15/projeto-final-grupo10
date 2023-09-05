@@ -46,11 +46,11 @@ export const LoginForm = () => {
             <p>Esqueci minha senha</p>
           </Link>
           <div className="button__container">
-            <Link to="/">
+            
               <button className="submitBtn" type="submit">
                 Entrar
               </button>
-            </Link>
+            
             <p>Ainda não possui conta ?</p>
             <Link to="/register">
               <button className="registerBtn">Cadastrar</button>

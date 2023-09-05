@@ -38,15 +38,19 @@ export interface IUserRegister{
     password:string
     cpf:string
     contact_number:string
-    birthdate: Date
+    birthdate: string
     description:string
-    zipCode:string
-    state:string
-    city:string
-    street:string
-    number:string
-    complement:string
-    type_account:string
+    account_type:string | null
+    profile_image:string
+    address:{
+
+        zipCode:string
+        estate:string
+        city:string
+        street:string
+        number:string
+        complement:string
+    }
 
 }
 export interface IUserUpdate{
