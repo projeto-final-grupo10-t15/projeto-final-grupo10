@@ -1,7 +1,7 @@
 import { MigrationInterface, QueryRunner } from "typeorm";
 
-export class FixTyping1693854327085 implements MigrationInterface {
-    name = 'FixTyping1693854327085'
+export class CreateTables1693947250630 implements MigrationInterface {
+    name = 'CreateTables1693947250630'
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.query(`CREATE TABLE "comments" ("id" SERIAL NOT NULL, "comments" character varying NOT NULL, "userId" integer, "carId" integer, CONSTRAINT "PK_8bf68bc960f2b69e818bdb90dcb" PRIMARY KEY ("id"))`);
