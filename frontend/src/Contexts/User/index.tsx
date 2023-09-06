@@ -1,7 +1,6 @@
-import { createContext, useEffect, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import {
   IUser,
-  IUserContext,
   IUserLogin,
   IUserProviderProps,
   IUserRegister,
@@ -11,16 +10,31 @@ import {
 import { useNavigate } from "react-router-dom";
 import { api } from "../../services/api";
 
+type IUserContext = {
+  loginUser: (
+    data: IUserLogin,
+    setLoading: React.Dispatch<React.SetStateAction<boolean>>
+  ) => Promise<void>;
+  loading: boolean;
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  registerUser: (
+    data: IUserRegister,
+    setLoading: React.Dispatch<React.SetStateAction<boolean>>
+  ) => Promise<void>;
+  logout: () => void;
+  updateUser: (data: IUserUpdate) => Promise<void>;
+  user: IUser | null;
+};
+
 export const UserContext = createContext<IUserContext>({} as IUserContext);
 
 export const UserProvider = ({ children }: IUserProviderProps) => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [user, setUser] = useState<IUser | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
     const token = localStorage.getItem("@TOKEN");
-
     if (!token) {
       setLoading(false);
       return;
@@ -29,27 +43,32 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
     setLoading(false);
   }, []);
 
-  const registerUser = async (data: IUserRegister): Promise<void> => {
+  const registerUser = async (
+    data: IUserRegister,
+    setLoading: React.Dispatch<React.SetStateAction<boolean>>
+  ): Promise<void> => {
     try {
-      const response = await api.post("/users", data);
+      setLoading(true);
+      const response = await api.post("/register", data);
       setUser(response.data.user);
       navigate("/login");
     } catch (error) {
       console.log(error);
     }
   };
-  
-  const loginUser = async (data: IUserLogin): Promise<void> => {
+
+  const loginUser = async (
+    data: IUserLogin,
+    setLoading: React.Dispatch<React.SetStateAction<boolean>>
+  ): Promise<void> => {
     try {
       const response = await api.post<LoginResponse>("/login", data);
-      
       const { token, id } = response.data;
-      
       api.defaults.headers.common.Authorization = `Bearer ${token}`;
       localStorage.setItem("@TOKEN", token);
       localStorage.setItem("@ID", id!);
-      setLoading(false);
       navigate("/");
+      setLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -65,7 +84,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
     const token = localStorage.getItem("@TOKEN");
     const id = localStorage.getItem("@ID");
     try {
-      const response = await api.patch(`/users/ ${id}`, data);
+      const response = await api.patch(`/users/${id}`, data);
       api.defaults.headers.common.Authorization = `Bearer ${token}`;
       setUser(response.data);
     } catch (error) {
@@ -74,7 +93,15 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
   };
   return (
     <UserContext.Provider
-      value={{ loginUser, loading, registerUser, logout, updateUser, user }}
+      value={{
+        loginUser,
+        loading,
+        setLoading,
+        registerUser,
+        logout,
+        updateUser,
+        user,
+      }}
     >
       {children}
     </UserContext.Provider>

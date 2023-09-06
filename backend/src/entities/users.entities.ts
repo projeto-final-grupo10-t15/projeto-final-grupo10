@@ -28,7 +28,7 @@ export class User {
   password: string;
 
   @Column({ type: "varchar" })
-  profile_image: string;
+  profile_image: string | null;
 
   @Column({ type: "varchar" })
   description: string;

@@ -39,6 +39,7 @@ export const GlobalStyles = createGlobalStyle`
     --random10:#6100FF;
     --random11:#5700E3;
     --random12:#30007D;
+    --random13:#6100F0;
 
     --font-heading1-700: 700;
     --font-heading2-600: 600;

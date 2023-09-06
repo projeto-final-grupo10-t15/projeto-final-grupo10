@@ -5,8 +5,9 @@ import { api } from "../../services/api";
 type CommentContextProps = {
   comment: IComment[] | [];
   setComment: React.Dispatch<React.SetStateAction<IComment[] | []>>;
-  createComment: (id: number | null, data: IComment) => void;
-  listAllComents: (id: number | null) => void;
+  createComment: (data: IComment) => void;
+  listAllComments: () => void;
+  listMyComments: (id: number | null) => void;
   updateComment: (id: number | null, data: IUpdateComment) => void;
   deleteComment: (id: number | null) => void;
 };
@@ -30,10 +31,10 @@ const CommentProvider = ({ children }: iChildren) => {
     Comments();
   }, []);
 
-  const createComment = async (id: number | null, data: IComment) => {
+  const createComment = async (data: IComment) => {
     const token = localStorage.getItem("@TOKEN");
     try {
-      const response = await api.post(`/users/${id}/comments`, data, {
+      const response = await api.post("/comments", data, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -44,10 +45,24 @@ const CommentProvider = ({ children }: iChildren) => {
     }
   };
 
-  const listAllComents = async (id: number | null) => {
+  const listAllComments = async () => {
     const token = localStorage.getItem("@TOKEN");
     try {
-      const response = await api.get(`/users/${id}/comments`, {
+      const response = await api.get("/comments", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setComment(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const listMyComments = async (id: number | null) => {
+    const token = localStorage.getItem("@TOKEN");
+    try {
+      const response = await api.get(`/comments/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -61,7 +76,7 @@ const CommentProvider = ({ children }: iChildren) => {
   const updateComment = async (id: number | null, data: IUpdateComment) => {
     const token = localStorage.getItem("@TOKEN");
     try {
-      const response = await api.patch(`/users/${id}/comments`, data, {
+      const response = await api.patch(`/comments/${id}`, data, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -100,7 +115,8 @@ const CommentProvider = ({ children }: iChildren) => {
         comment,
         setComment,
         createComment,
-        listAllComents,
+        listAllComments,
+        listMyComments,
         updateComment,
         deleteComment,
       }}

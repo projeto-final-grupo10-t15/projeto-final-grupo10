@@ -35,9 +35,9 @@ export const FooterPages = () => {
       />
       <a href="">Anterior</a>
       <div>
-        <span>1</span>
+        <a>1</a>
         <span>de</span>
-        <span>2</span>
+        <a>2</a>
       </div>
       <a href="">Seguinte</a>
       <img src="src/assets/angulo-duplo-pequeno-direito.png" alt="arrowNext" />

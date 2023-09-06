@@ -66,8 +66,15 @@ const StyledFooterPages = styled.footer`
 
   a {
     color: var(--brand2);
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 600;
+  }
+
+  div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
   }
 
   span {
@@ -78,15 +85,16 @@ const StyledFooterPages = styled.footer`
     color: var(--grey4);
   }
 
-  span:hover {
-    color: var(--grey3);
+  div > a {
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--grey4);
   }
 
-  div {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 5px;
+  div > a:hover {
+    color: var(--grey2);
   }
 `;
 
