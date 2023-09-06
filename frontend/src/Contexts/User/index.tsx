@@ -50,14 +50,9 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
     try {
       setLoading(true);
       const response = await api.post("/users", data);
-    
       setUser(response.data.user);
       navigate("/login");
-<<<<<<< HEAD
       setLoading(false);
-=======
-      setLoading(false)
->>>>>>> 462aaff1b9acb0e5fa0fde73db236125a1cdd11c
     } catch (error) {
       console.log(error);
     }
@@ -68,6 +63,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
     setLoading: React.Dispatch<React.SetStateAction<boolean>>
   ): Promise<void> => {
     try {
+      setLoading(true);
       const response = await api.post<LoginResponse>("/login", data);
       const { token, id } = response.data;
       api.defaults.headers.common.Authorization = `Bearer ${token}`;
