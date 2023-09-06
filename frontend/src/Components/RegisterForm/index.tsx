@@ -36,7 +36,7 @@ export const RegisterForm = () => {
         <>
           <StyledRegisterForm>
             <div className="register__container">
-              <form noValidate onSubmit={handleSubmit(submit)}>
+              <form onSubmit={handleSubmit(submit)}>
                 <h2>Cadastro</h2>
                 <p>Informações pessoais</p>
                 <Input
@@ -163,7 +163,7 @@ export const RegisterForm = () => {
                       value="Comprador"
                       defaultChecked
                       checked={userType === "Comprador"}
-                      {...register("account_type")}
+                      {...register("account_type") }
                       onChange={handleUserTypeChange}
                       name="userType"
                       disabled={loading}

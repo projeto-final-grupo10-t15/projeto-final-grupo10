@@ -49,10 +49,15 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
   ): Promise<void> => {
     try {
       setLoading(true);
-      const response = await api.post("/register", data);
+      const response = await api.post("/users", data);
+    
       setUser(response.data.user);
       navigate("/login");
+<<<<<<< HEAD
       setLoading(false);
+=======
+      setLoading(false)
+>>>>>>> 462aaff1b9acb0e5fa0fde73db236125a1cdd11c
     } catch (error) {
       console.log(error);
     }
