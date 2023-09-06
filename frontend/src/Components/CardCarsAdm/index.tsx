@@ -1,269 +1,33 @@
 import SectionCarsAdm from "./style";
 import imgCar from "../../assets/carsTest.png";
+import { useContext } from "react";
+import { CarContext } from "../../Contexts/Car";
 const CardCarsAdm = () => {
+  const { cars } = useContext(CarContext);
   return (
     <SectionCarsAdm>
       <ul>
-        <li>
-          <span className="actived">Ativo</span>
-          <img src={imgCar} alt="" />
-          <h3>Nome do Carro - Modelo</h3>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem...
-          </p>
-          <div>
+        {cars.map((car) => (
+          <li>
+            <span className="actived">Ativo</span>
+            <img src={imgCar} alt="" />
+            <h3>
+              {car.brand} - <span>{car.model}</span>
+            </h3>
+            <p>{car.description}</p>
             <div>
-              <p>0 Km</p>
-              <p>2019</p>
+              <div>
+                <p>{car.mileage} Km</p>
+                <p>{car.year}</p>
+              </div>
+              <span>R$ {car.price}</span>
             </div>
-            <span>R$ 20.000</span>
-          </div>
-          <div className="boxButtons">
-            <button> Editar </button>
-            <button> Ver detalhes </button>
-          </div>
-        </li>
-        <li>
-          <span className="actived">Ativo</span>
-          <img src={imgCar} alt="" />
-          <h3>Nome do Carro - Modelo</h3>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem...
-          </p>
-          <div>
-            <div>
-              <p>0 Km</p>
-              <p>2019</p>
+            <div className="boxButtons">
+              <button> Editar </button>
+              <button> Ver detalhes </button>
             </div>
-            <span>R$ 20.000</span>
-          </div>
-          <div className="boxButtons">
-            <button> Editar </button>
-            <button> Ver detalhes </button>
-          </div>
-        </li>
-        <li>
-          <span className="actived">Ativo</span>
-          <img src={imgCar} alt="" />
-          <h3>Nome do Carro - Modelo</h3>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem...
-          </p>
-          <div>
-            <div>
-              <p>0 Km</p>
-              <p>2019</p>
-            </div>
-            <span>R$ 20.000</span>
-          </div>
-          <div className="boxButtons">
-            <button> Editar </button>
-            <button> Ver detalhes </button>
-          </div>
-        </li>
-        <li>
-          <span className="actived">Ativo</span>
-          <img src={imgCar} alt="" />
-          <h3>Nome do Carro - Modelo</h3>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem...
-          </p>
-          <div>
-            <div>
-              <p>0 Km</p>
-              <p>2019</p>
-            </div>
-            <span>R$ 20.000</span>
-          </div>
-          <div className="boxButtons">
-            <button> Editar </button>
-            <button> Ver detalhes </button>
-          </div>
-        </li>
-        <li>
-          <span className="actived">Ativo</span>
-          <img src={imgCar} alt="" />
-          <h3>Nome do Carro - Modelo</h3>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem...
-          </p>
-          <div>
-            <div>
-              <p>0 Km</p>
-              <p>2019</p>
-            </div>
-            <span>R$ 20.000</span>
-          </div>
-          <div className="boxButtons">
-            <button> Editar </button>
-            <button> Ver detalhes </button>
-          </div>
-        </li>
-        <li>
-          <span className="actived">Ativo</span>
-          <img src={imgCar} alt="" />
-          <h3>Nome do Carro - Modelo</h3>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem...
-          </p>
-          <div>
-            <div>
-              <p>0 Km</p>
-              <p>2019</p>
-            </div>
-            <span>R$ 20.000</span>
-          </div>
-          <div className="boxButtons">
-            <button> Editar </button>
-            <button> Ver detalhes </button>
-          </div>
-        </li>
-        <li>
-          <span className="actived">Ativo</span>
-          <img src={imgCar} alt="" />
-          <h3>Nome do Carro - Modelo</h3>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem...
-          </p>
-          <div>
-            <div>
-              <p>0 Km</p>
-              <p>2019</p>
-            </div>
-            <span>R$ 20.000</span>
-          </div>
-          <div className="boxButtons">
-            <button> Editar </button>
-            <button> Ver detalhes </button>
-          </div>
-        </li>
-        <li>
-          <span className="actived">Ativo</span>
-          <img src={imgCar} alt="" />
-          <h3>Nome do Carro - Modelo</h3>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem...
-          </p>
-          <div>
-            <div>
-              <p>0 Km</p>
-              <p>2019</p>
-            </div>
-            <span>R$ 20.000</span>
-          </div>
-          <div className="boxButtons">
-            <button> Editar </button>
-            <button> Ver detalhes </button>
-          </div>
-        </li>
-        <li>
-          <span className="actived">Ativo</span>
-          <img src={imgCar} alt="" />
-          <h3>Nome do Carro - Modelo</h3>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem...
-          </p>
-          <div>
-            <div>
-              <p>0 Km</p>
-              <p>2019</p>
-            </div>
-            <span>R$ 20.000</span>
-          </div>
-          <div className="boxButtons">
-            <button> Editar </button>
-            <button> Ver detalhes </button>
-          </div>
-        </li>
-        <li>
-          <span className="actived">Ativo</span>
-          <img src={imgCar} alt="" />
-          <h3>Nome do Carro - Modelo</h3>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem...
-          </p>
-          <div>
-            <div>
-              <p>0 Km</p>
-              <p>2019</p>
-            </div>
-            <span>R$ 20.000</span>
-          </div>
-          <div className="boxButtons">
-            <button> Editar </button>
-            <button> Ver detalhes </button>
-          </div>
-        </li>
-        <li>
-          <span className="actived">Ativo</span>
-          <img src={imgCar} alt="" />
-          <h3>Nome do Carro - Modelo</h3>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem...
-          </p>
-          <div>
-            <div>
-              <p>0 Km</p>
-              <p>2019</p>
-            </div>
-            <span>R$ 20.000</span>
-          </div>
-          <div className="boxButtons">
-            <button> Editar </button>
-            <button> Ver detalhes </button>
-          </div>
-        </li>
-        <li>
-          <span className="actived">Ativo</span>
-          <img src={imgCar} alt="" />
-          <h3>Nome do Carro - Modelo</h3>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem...
-          </p>
-          <div>
-            <div>
-              <p>0 Km</p>
-              <p>2019</p>
-            </div>
-            <span>R$ 20.000</span>
-          </div>
-          <div className="boxButtons">
-            <button> Editar </button>
-            <button> Ver detalhes </button>
-          </div>
-        </li>
-        <li>
-          <span className="actived">Ativo</span>
-          <img src={imgCar} alt="" />
-          <h3>Nome do Carro - Modelo</h3>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem...
-          </p>
-          <div>
-            <div>
-              <p>0 Km</p>
-              <p>2019</p>
-            </div>
-            <span>R$ 20.000</span>
-          </div>
-          <div className="boxButtons">
-            <button> Editar </button>
-            <button> Ver detalhes </button>
-          </div>
-        </li>
+          </li>
+        ))}
       </ul>
     </SectionCarsAdm>
   );

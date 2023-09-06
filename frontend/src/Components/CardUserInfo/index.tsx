@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import perfilImg from "../../assets/perfil Img.svg";
 import { CardUserInfoContainer } from "./style";
 import { UserContext } from "../../Contexts/User";
 
@@ -8,23 +7,21 @@ interface CardUserInfoProps {
 }
 
 const CardUserInfo = ({ button }: CardUserInfoProps) => {
-  const {user} = useContext(UserContext)
+  const { user } = useContext(UserContext);
   return (
     <CardUserInfoContainer>
       <div className="perfil__box">
         <div className="perfil__box--img">
-          <img src={perfilImg} alt="perfil" />
+          <img src={user?.profile_image} alt="perfil" />
         </div>
         <div className="perfil__name">
           <h3>{user?.name}</h3>
-          <p>Anunciante</p>
+          <p></p>
         </div>
         <div className="perfil__box--info">
-          <p>
-            {user?.description}
-          </p>
+          <p>{user?.description}</p>
         </div>
-        {button === "Anunciante" && (
+        {button === "" && (
           <div className="containerBtn">
             <button>Criar Anuncio</button>
           </div>

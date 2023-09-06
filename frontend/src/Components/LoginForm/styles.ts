@@ -8,7 +8,6 @@ export const StyledLoginForm = styled.main`
   align-items: center;
   justify-content: center;
   background-color: var(--grey8);
-  padding: 15px 0;
   .login__container {
     display: flex;
     padding: 2rem 1rem;
@@ -43,6 +42,7 @@ export const StyledLoginForm = styled.main`
     text-align: end;
     padding-bottom: 15px;
   }
+
   .button__container {
     width: 100%;
     display: flex;
@@ -75,6 +75,7 @@ export const StyledLoginForm = styled.main`
     }
     .submitBtn:hover {
       background-color: var(--brand2);
+      font-weight: 600;
     }
     .registerBtn {
       border: 2px solid var(--grey4);

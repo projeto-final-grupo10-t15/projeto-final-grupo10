@@ -8,7 +8,7 @@ const StyledAsideFilter = styled.aside`
   max-width: 100%;
   height: 100%;
   background-color: var(--whiteFixed);
-  padding: 40px 10px;
+  padding: 10px;
 
   ul > li > h2 {
     margin-bottom: 15px;
@@ -32,7 +32,6 @@ const StyledListAside = styled.ul`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  gap: 15px;
 `;
 
 const StyledAsideInfosCard = styled.li`
@@ -40,11 +39,14 @@ const StyledAsideInfosCard = styled.li`
   flex-direction: column;
   margin: 15px 0;
 
-  p {
+  button {
+    background-color: transparent;
+    font-size: 14px;
+    max-width: 20px;
     color: var(--grey3);
   }
 
-  p:hover {
+  button:hover {
     color: var(--grey2);
   }
 `;

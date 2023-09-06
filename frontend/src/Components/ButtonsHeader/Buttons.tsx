@@ -1,5 +1,5 @@
 import { StyledButton } from "./styles";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 const Buttons = () => {
   return (
@@ -8,7 +8,7 @@ const Buttons = () => {
         <button className="loginButton">Fazer login</button>
       </Link>
       <Link to="/register">
-       <button className="registerButton">Cadastrar</button>
+        <button className="registerButton">Cadastrar</button>
       </Link>
     </StyledButton>
   );

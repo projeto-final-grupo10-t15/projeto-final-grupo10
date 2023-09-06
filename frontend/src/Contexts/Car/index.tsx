@@ -3,9 +3,12 @@ import { ICars, iChildren } from "./interfaces";
 import { api } from "../../services/api";
 
 type CarContextProps = {
-  car: ICars[] | [];
-  setCar: React.Dispatch<React.SetStateAction<ICars[] | []>>;
-  createCar: (id: number | null, data: ICars) => void;
+  cars: ICars[] | [];
+  setCars: React.Dispatch<React.SetStateAction<ICars[] | []>>;
+  filters: ICars[] | [];
+  setFilters: React.Dispatch<React.SetStateAction<ICars[] | []>>;
+  ApplyFilter: () => void;
+  createCar: (data: ICars) => void;
   updateCar: (id: number | null, data: ICars) => void;
   listMyCars: (id: number | null) => void;
   listAllCars: () => void;
@@ -14,13 +17,39 @@ type CarContextProps = {
 const CarContext = createContext<CarContextProps>({} as CarContextProps);
 
 const CarProvider = ({ children }: iChildren) => {
-  const [car , setCar] = useState<ICars[] | []>([]);
+  const [cars, setCars] = useState<ICars[] | []>([]);
+  const [filters, setFilters] = useState<ICars[] | null>([]);
+
+  const ApplyFilter = () => {
+    let filteredCars = cars;
+
+    filters?.map((filter) => {
+      if (filter.brand) {
+        filteredCars = filteredCars.filter((car) => car.brand === filter.brand);
+      }
+      if (filter.model) {
+        filteredCars = filteredCars.filter((car) => car.model === filter.model);
+      }
+      if (filter.color) {
+        filteredCars = filteredCars.filter((car) => car.color === filter.color);
+      }
+      if (filter.year) {
+        filteredCars = filteredCars.filter((car) => car.year === filter.year);
+      }
+      if (filter.fuel_type) {
+        filteredCars = filteredCars.filter(
+          (car) => car.fuel_type === filter.fuel_type
+        );
+      }
+      return filteredCars;
+    });
+  };
 
   useEffect(() => {
     const Cars = async () => {
       try {
         const response = await api.get("/cars");
-        setCar(response.data);
+        setCars(response.data);
       } catch (error) {
         console.log(error);
       }
@@ -28,7 +57,7 @@ const CarProvider = ({ children }: iChildren) => {
     Cars();
   }, []);
 
-  const createCar = async (id: number | null, data: ICars) => {
+  const createCar = async (data: ICars) => {
     const token = localStorage.getItem("@TOKEN");
     try {
       const response = await api.post(`/cars`, data, {
@@ -36,7 +65,7 @@ const CarProvider = ({ children }: iChildren) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      setCar(response.data);
+      setCars(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -44,26 +73,26 @@ const CarProvider = ({ children }: iChildren) => {
 
   const listAllCars = async () => {
     try {
-      const response = await api.get("/cars")
-      setCar(response.data)
+      const response = await api.get("/cars");
+      setCars(response.data);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   const listMyCars = async (id: number | null) => {
-    const token = localStorage.getItem("@TOKEN")
+    const token = localStorage.getItem("@TOKEN");
     try {
       const response = await api.get(`/cars/user/${id}`, {
         headers: {
-          Authorization: `Bearer ${token}`
-        }
-      })
-      setCar(response.data)
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setCars(response.data);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   const updateCar = async (id: number | null, data: ICars) => {
     const token = localStorage.getItem("@TOKEN");
@@ -73,20 +102,32 @@ const CarProvider = ({ children }: iChildren) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      const newAd = car.map((ca) => {
-        if (ca.id === id) {
+      const newAd = cars.map((car) => {
+        if (car.id === id) {
           return response.data;
         } else {
-          return ca;
+          return car;
         }
       });
-      setCar(newAd);
+      setCars(newAd);
     } catch (error) {
       console.log(error);
     }
   };
   return (
-    <CarContext.Provider value={{ car, setCar, createCar, updateCar, listMyCars, listAllCars }}>
+    <CarContext.Provider
+      value={{
+        cars,
+        setCars,
+        filters,
+        setFilters,
+        ApplyFilter,
+        createCar,
+        updateCar,
+        listMyCars,
+        listAllCars,
+      }}
+    >
       {children}
     </CarContext.Provider>
   );

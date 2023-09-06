@@ -31,8 +31,8 @@ const StyledArticlePrimary = styled.article`
   max-height: 1280px;
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
   align-items: center;
+  justify-content: flex-start;
   padding: 0 30px;
 `;
 
