@@ -22,7 +22,11 @@ export const RegisterSchema = z.object({
   }),
   account_type: z.string().nullish(),
   password: z.string().nonempty("A senha é obrigatória!").min(4).max(50),
-  confirmPassword: z.string().nonempty("Este campo é obrigatório!").min(4).max(50),
+  confirmPassword: z
+    .string()
+    .nonempty("Este campo é obrigatório!")
+    .min(4)
+    .max(50),
 });
 
 export type RegisterData = z.infer<typeof RegisterSchema>;
