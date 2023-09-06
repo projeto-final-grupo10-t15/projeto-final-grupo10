@@ -52,6 +52,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
       const response = await api.post("/register", data);
       setUser(response.data.user);
       navigate("/login");
+      setLoading(false);
     } catch (error) {
       console.log(error);
     }
