@@ -9,7 +9,7 @@ export const RegisterSchema = z.object({
     .min(11, "Confirme seu número!")
     .max(25, "É permitido no máximo 25 dígitos!")
     .nonempty("Este campo não pode ser vazio"),
-  birthdate: z.string().datetime(),
+  birthdate: z.date().or(z.string()),
   description: z.string().max(300),
   profile_image: z.string(),
   address: z.object({
@@ -20,7 +20,7 @@ export const RegisterSchema = z.object({
     number: z.string().nonempty("Este campo é obrigatório!"),
     complement: z.string(),
   }),
-  account_type: z.string().nullish(),
+  account_type: z.string().nullable(),
   password: z.string().nonempty("A senha é obrigatória!").min(4).max(50),
   confirmPassword: z.string().nonempty("Este campo é obrigatório!").min(4).max(50),
 });

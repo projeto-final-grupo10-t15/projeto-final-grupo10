@@ -39,10 +39,10 @@ export interface IUserRegister {
   birthdate: Date | string;
   description: string;
   profile_image: string;
-  address: Array<IAddress>;
+  address: IAddress;
   password: string;
   confirmPassword: string;
-  account_type: string;
+  account_type: string | null ;
 }
 export interface IUserUpdate {
   name?: string;

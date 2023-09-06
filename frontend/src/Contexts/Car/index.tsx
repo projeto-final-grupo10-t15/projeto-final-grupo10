@@ -31,7 +31,7 @@ const CarProvider = ({ children }: iChildren) => {
   const createCar = async (id: number | null, data: ICars) => {
     const token = localStorage.getItem("@TOKEN");
     try {
-      const response = await api.post(`/cars/${id}`, data, {
+      const response = await api.post(`/cars`, data, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -44,7 +44,7 @@ const CarProvider = ({ children }: iChildren) => {
 
   const listAllCars = async () => {
     try {
-      const response = await api.get("/ads")
+      const response = await api.get("/cars")
       setCar(response.data)
     } catch (error) {
       console.log(error)
@@ -54,7 +54,7 @@ const CarProvider = ({ children }: iChildren) => {
   const listMyCars = async (id: number | null) => {
     const token = localStorage.getItem("@TOKEN")
     try {
-      const response = await api.get(`/cars/${id}`, {
+      const response = await api.get(`/cars/user/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
