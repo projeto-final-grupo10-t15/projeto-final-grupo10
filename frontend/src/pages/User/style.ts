@@ -5,6 +5,7 @@ export const MainContainer = styled.main`
   height: 100%;
   margin: 0 auto;
   max-height: max-content;
+  padding: 0 0 100px 0;
   display: flex;
   flex-direction: column;
   background-color: var(--grey8);

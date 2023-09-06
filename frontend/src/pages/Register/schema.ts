@@ -1,26 +1,28 @@
 import { z } from "zod";
 
 export const RegisterSchema = z.object({
-    name:z.string().nonempty("Este campo não pode ser vazio"),
-    email:z.string().email("Deve ser um e-mail"),
-    cpf:z.string().nonempty("Este campo não pode ser vazio"),
-    contact_number: z.string().nonempty("Este campo não pode ser vazio"),
-    birthdate: z.string(),
-    description: z.string(),
-    profile_image: z.string(),
-    address: z.object({
-        zipCode: z.string().nonempty("Este campo não pode ser vazio"),
-        estate: z.string().nonempty("Este campo não pode ser vazio"),
-        city: z.string().nonempty("Este campo não pode ser vazio"),
-        street: z.string().nonempty("Este campo não pode ser vazio"),
-        number: z.string().nonempty("Este campo não pode ser vazio"),
-        complement: z.string(),
+  name: z.string().nonempty("O nome é obrigatório!"),
+  email: z.string().email("O email é obrigatório!"),
+  cpf: z.string().nonempty("Este campo não pode ser vazio"),
+  contact_number: z
+    .string()
+    .min(11, "Confirme seu número!")
+    .max(25, "É permitido no máximo 25 dígitos!")
+    .nonempty("Este campo não pode ser vazio"),
+  birthdate: z.string().datetime(),
+  description: z.string().max(300),
+  profile_image: z.string(),
+  address: z.object({
+    zipCode: z.string().nonempty("Este campo é obrigatório!"),
+    estate: z.string().nonempty("Este campo é obrigatório!"),
+    city: z.string().nonempty("Este campo é obrigatório!"),
+    street: z.string().nonempty("Este campo é obrigatório!"),
+    number: z.string().nonempty("Este campo é obrigatório!"),
+    complement: z.string(),
+  }),
+  account_type: z.string().nullish(),
+  password: z.string().nonempty("A senha é obrigatória!").min(4).max(50),
+  confirmPassword: z.string().nonempty("Este campo é obrigatório!").min(4).max(50),
+});
 
-    }),
-    account_type:z.string().nullable(),
-    password: z.string().nonempty("Este campo não pode ser vazio"),
-    confirmPassword: z.string().nonempty("Este campo não pode ser vazio")
-
-})
-
-export type RegisterData = z.infer<typeof RegisterSchema>
+export type RegisterData = z.infer<typeof RegisterSchema>;

@@ -20,5 +20,15 @@ export const StyledInput = styled.fieldset`
     width: 100%;
     height: 48px;
     padding: 0.3rem;
+    transform: scale(1);
+  }
+
+  :focus {
+    box-shadow: 0 0 4px 1px var(--brand2);
+    outline: 0;
+  }
+
+  input:hover {
+    transform: scale(1.04);
   }
 `;

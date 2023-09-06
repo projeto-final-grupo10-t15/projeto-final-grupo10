@@ -4,15 +4,6 @@ export interface IUserProviderProps {
   children: ReactNode;
 }
 
-export interface IUserContext {
-  loginUser: (data: IUserLogin) => Promise<void>;
-  loading: boolean;
-  registerUser: (data: IUserRegister) => Promise<void>;
-  logout: () => void;
-  updateUser: (data: IUserUpdate) => Promise<void>;
-  user: IUser | null;
-}
-
 export interface IUser {
   id?: number;
   name: string;
@@ -32,21 +23,26 @@ export interface LoginResponse {
   id?: string;
 }
 
-export interface IUserRegister {
-  name: string;
-  email: string;
-  password: string;
-  cpf: string;
-  contact_number: string;
-  birthdate: Date;
-  description: string;
+export interface IAddress {
   zipCode: string;
-  state: string;
+  estate: string;
   city: string;
   street: string;
   number: string;
   complement: string;
-  type_account: string;
+}
+export interface IUserRegister {
+  name: string;
+  email: string;
+  cpf: string;
+  contact_number: string;
+  birthdate: Date | string;
+  description: string;
+  profile_image: string;
+  address: Array<IAddress>;
+  password: string;
+  confirmPassword: string;
+  account_type: string;
 }
 export interface IUserUpdate {
   name?: string;

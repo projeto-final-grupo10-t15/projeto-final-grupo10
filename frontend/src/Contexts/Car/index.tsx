@@ -5,8 +5,8 @@ import { api } from "../../services/api";
 type CarContextProps = {
   car: ICars[] | [];
   setCar: React.Dispatch<React.SetStateAction<ICars[] | []>>;
-  createCar: (id: number | null, formData: ICars) => void;
-  updateCar: (id: number | null, formData: ICars) => void;
+  createCar: (id: number | null, data: ICars) => void;
+  updateCar: (id: number | null, data: ICars) => void;
   listMyCars: (id: number | null) => void;
   listAllCars: () => void;
 };
