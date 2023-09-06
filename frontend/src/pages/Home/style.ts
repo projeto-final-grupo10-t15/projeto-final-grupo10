@@ -37,6 +37,8 @@ const StyledArticlePrimary = styled.article`
 `;
 
 const StyledDivNameProfile = styled.div`
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;

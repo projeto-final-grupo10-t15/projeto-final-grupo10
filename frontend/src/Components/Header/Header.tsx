@@ -27,7 +27,7 @@ const Header = () => {
       <div className="header__logo">
         <img src={logo} alt="Logo" />
       </div>
-      <div className="menuToggle" onClick={() => setShowMenu(!showMenu)}>
+      <div className="menuToggle" onClick={() => setShowMenu(showMenu)}>
         <img src={showMenu ? closeIcon : hamburguerIcon} alt="menu toggle" />
       </div>
       {isMobile ? <Drop show={showMenu} /> : <Buttons />}

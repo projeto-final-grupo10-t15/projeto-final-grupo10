@@ -206,7 +206,7 @@ export const RegisterForm = () => {
                 />
                 {password !== confirmPassword && <p>As senhas não coincidem</p>}
 
-                <button className="submitBtn" type="submit">
+                <button className="submitBtn" type="submit" disabled={loading}>
                   {loading ? "Cadastrando..." : "Finalizar cadastro"}
                 </button>
               </form>

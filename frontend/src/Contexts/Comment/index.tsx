@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useState } from "react";
 import { IComment, IUpdateComment, iChildren } from "./interfaces";
 import { api } from "../../services/api";
 
@@ -18,18 +18,6 @@ const CommentContext = createContext<CommentContextProps>(
 
 const CommentProvider = ({ children }: iChildren) => {
   const [comment, setComment] = useState<IComment[] | []>([]);
-
-  useEffect(() => {
-    const Comments = async () => {
-      try {
-        const response = await api.get("/comments");
-        setComment(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    Comments();
-  }, []);
 
   const createComment = async (data: IComment) => {
     const token = localStorage.getItem("@TOKEN");

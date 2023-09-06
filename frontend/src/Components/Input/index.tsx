@@ -10,6 +10,7 @@ export const Input = ({
   placeholder,
   max,
   min,
+  src
 }: IInputProps) => (
   <StyledInput>
     <label htmlFor={id}>{label}</label>
@@ -18,6 +19,7 @@ export const Input = ({
       id={id}
       max={max}
       min={min}
+      src={src}
       {...register}
       placeholder={placeholder}
     />

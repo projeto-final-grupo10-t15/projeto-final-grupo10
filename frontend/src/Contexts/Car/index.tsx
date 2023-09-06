@@ -1,13 +1,13 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 import { ICars, iChildren } from "./interfaces";
 import { api } from "../../services/api";
 
 type CarContextProps = {
   cars: ICars[] | [];
   setCars: React.Dispatch<React.SetStateAction<ICars[] | []>>;
-  filters: ICars[] | [];
-  setFilters: React.Dispatch<React.SetStateAction<ICars[] | []>>;
-  ApplyFilter: () => void;
+  filters: ICars[] | null;
+  setFilters: React.Dispatch<React.SetStateAction<ICars[] | null>>;
+  ApplyFilterCar: () => void;
   createCar: (data: ICars) => void;
   updateCar: (id: number | null, data: ICars) => void;
   listMyCars: (id: number | null) => void;
@@ -20,42 +20,42 @@ const CarProvider = ({ children }: iChildren) => {
   const [cars, setCars] = useState<ICars[] | []>([]);
   const [filters, setFilters] = useState<ICars[] | null>([]);
 
-  const ApplyFilter = () => {
+  const ApplyFilterCar = () => {
     let filteredCars = cars;
 
     filters?.map((filter) => {
-      if (filter.brand) {
-        filteredCars = filteredCars.filter((car) => car.brand === filter.brand);
-      }
-      if (filter.model) {
-        filteredCars = filteredCars.filter((car) => car.model === filter.model);
-      }
-      if (filter.color) {
-        filteredCars = filteredCars.filter((car) => car.color === filter.color);
-      }
-      if (filter.year) {
-        filteredCars = filteredCars.filter((car) => car.year === filter.year);
-      }
-      if (filter.fuel_type) {
-        filteredCars = filteredCars.filter(
-          (car) => car.fuel_type === filter.fuel_type
-        );
+      switch (true) {
+        case Boolean(filter.brand):
+          filteredCars = filteredCars.filter(
+            (cars) => cars.brand === filter.brand
+          );
+          break;
+        case Boolean(filter.model):
+          filteredCars = filteredCars.filter(
+            (cars) => cars.model === filter.model
+          );
+          break;
+        case Boolean(filter.color):
+          filteredCars = filteredCars.filter(
+            (cars) => cars.color === filter.color
+          );
+          break;
+        case Boolean(filter.year):
+          filteredCars = filteredCars.filter(
+            (cars) => cars.year === filter.year
+          );
+          break;
+        case Boolean(filter.fuel_type):
+          filteredCars = filteredCars.filter(
+            (cars) => cars.fuel_type === filter.fuel_type
+          );
+          break;
+        default:
+          break;
       }
       return filteredCars;
     });
   };
-
-  useEffect(() => {
-    const Cars = async () => {
-      try {
-        const response = await api.get("/cars");
-        setCars(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    Cars();
-  }, []);
 
   const createCar = async (data: ICars) => {
     const token = localStorage.getItem("@TOKEN");
@@ -121,7 +121,7 @@ const CarProvider = ({ children }: iChildren) => {
         setCars,
         filters,
         setFilters,
-        ApplyFilter,
+        ApplyFilterCar,
         createCar,
         updateCar,
         listMyCars,

@@ -1,5 +1,4 @@
 import SectionCarsAdm from "./style";
-import imgCar from "../../assets/carsTest.png";
 import { useContext } from "react";
 import { CarContext } from "../../Contexts/Car";
 const CardCarsAdm = () => {
@@ -10,7 +9,7 @@ const CardCarsAdm = () => {
         {cars.map((car) => (
           <li>
             <span className="actived">Ativo</span>
-            <img src={imgCar} alt="" />
+            <img src={car.first_image} alt="" />
             <h3>
               {car.brand} - <span>{car.model}</span>
             </h3>

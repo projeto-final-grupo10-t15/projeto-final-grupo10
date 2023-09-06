@@ -1,9 +1,9 @@
 import { styled } from "styled-components";
 
 const StyledSectionCars = styled.section`
-  display: flex;
   width: 100%;
   height: 100%;
+  display: flex;
   background-color: transparent;
   padding: 0 0 0 20px;
 `;

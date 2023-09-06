@@ -1,16 +1,14 @@
-import { StyledButton } from "./styles";
-import { Link } from "react-router-dom";
+import { StyledLinkLogin, StyledLinkRegister } from "../Link/styles";
+import { StyledDivButton } from "./styles";
 
 const Buttons = () => {
   return (
-    <StyledButton>
-      <Link to="/login">
-        <button className="loginButton">Fazer login</button>
-      </Link>
-      <Link to="/register">
-        <button className="registerButton">Cadastrar</button>
-      </Link>
-    </StyledButton>
+    <StyledDivButton>
+      <StyledLinkLogin to="/login" className="loginButton">
+        Fazer login
+      </StyledLinkLogin>
+      <StyledLinkRegister to="/register">Cadastrar</StyledLinkRegister>
+    </StyledDivButton>
   );
 };
 

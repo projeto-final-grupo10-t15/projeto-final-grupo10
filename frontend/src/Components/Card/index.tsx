@@ -18,7 +18,7 @@ export const Card = () => {
     <StyledSectionCars>
       <StyledListCars>
         {cars.map((car) => (
-          <StyledCardProduct>
+          <StyledCardProduct key={car.id}>
             <>
               <img src={car.first_image} alt="photoCar" />
               <button>{car.brand}</button>
@@ -28,7 +28,7 @@ export const Card = () => {
               <p>{car.description}</p>
             </>
             <StyledDivNameProfile>
-              <span>{user?.name.substring(0, 1)}</span>
+              <span>{user?.name}</span>
               <h4>{user?.name}</h4>
             </StyledDivNameProfile>
             <StyledDivInfosCars>
