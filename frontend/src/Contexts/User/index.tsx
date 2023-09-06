@@ -29,13 +29,12 @@ type IUserContext = {
 export const UserContext = createContext<IUserContext>({} as IUserContext);
 
 export const UserProvider = ({ children }: IUserProviderProps) => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [user, setUser] = useState<IUser | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
     const token = localStorage.getItem("@TOKEN");
-
     if (!token) {
       setLoading(false);
       return;
@@ -50,7 +49,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
   ): Promise<void> => {
     try {
       setLoading(true);
-      const response = await api.post("/users", data);
+      const response = await api.post("/register", data);
       setUser(response.data.user);
       navigate("/login");
     } catch (error) {
@@ -63,14 +62,13 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
     setLoading: React.Dispatch<React.SetStateAction<boolean>>
   ): Promise<void> => {
     try {
-      
       const response = await api.post<LoginResponse>("/login", data);
       const { token, id } = response.data;
       api.defaults.headers.common.Authorization = `Bearer ${token}`;
       localStorage.setItem("@TOKEN", token);
       localStorage.setItem("@ID", id!);
-      setLoading(false);
       navigate("/");
+      setLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -86,7 +84,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
     const token = localStorage.getItem("@TOKEN");
     const id = localStorage.getItem("@ID");
     try {
-      const response = await api.patch(`/users/ ${id}`, data);
+      const response = await api.patch(`/users/${id}`, data);
       api.defaults.headers.common.Authorization = `Bearer ${token}`;
       setUser(response.data);
     } catch (error) {

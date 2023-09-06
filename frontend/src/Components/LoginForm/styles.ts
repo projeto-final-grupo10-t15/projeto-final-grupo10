@@ -1,14 +1,14 @@
 import { styled } from "styled-components";
 
 export const StyledLoginForm = styled.main`
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100%;
   background-color: var(--grey8);
-  padding-bottom: 50px;
+  padding: 15px 0;
   .login__container {
     display: flex;
     padding: 2rem 1rem;
@@ -17,6 +17,7 @@ export const StyledLoginForm = styled.main`
     border-radius: 4px;
     background-color: var(--grey10);
     width: 100%;
+    height: 100%;
     max-width: 412px;
     max-height: 542px;
   }

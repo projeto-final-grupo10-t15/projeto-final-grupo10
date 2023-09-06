@@ -1,55 +1,59 @@
+import { useContext } from "react";
 import {
   StyledAsideFilter,
   StyledListAside,
   StyledAsideInfosCard,
 } from "../../Components/Aside/styled";
 import { Input } from "../Input";
+import { CarContext } from "../../Contexts/Car";
 
 export const AsideFilter = () => {
+  const { car } = useContext(CarContext);
   return (
     <>
       <StyledAsideFilter>
         <StyledListAside>
           <StyledAsideInfosCard>
             <h2>Marca</h2>
-            <p>General Motors</p>
-            <p>General Motors</p>
-            <p>General Motors</p>
-            <p>General Motors</p>
-            <p>General Motors</p>
+            <ul>
+              <>
+                {car.map((ca) => {
+                  <li>{ca.brand}</li>;
+                })}
+              </>
+            </ul>
           </StyledAsideInfosCard>
           <StyledAsideInfosCard>
             <h2>Modelo</h2>
-            <p>General Motors</p>
-            <p>General Motors</p>
-            <p>General Motors</p>
-            <p>General Motors</p>
-            <p>General Motors</p>
+            <>
+              {car.map((ca) => {
+                <li>{ca.model}</li>;
+              })}
+            </>
           </StyledAsideInfosCard>
           <StyledAsideInfosCard>
             <h2>Cor</h2>
-            <p>General Motors</p>
-            <p>General Motors</p>
-            <p>General Motors</p>
-            <p>General Motors</p>
-            <p>General Motors</p>
-            <p>General Motors</p>
+            <>
+              {car.map((ca) => {
+                <li>{ca.color}</li>;
+              })}
+            </>
           </StyledAsideInfosCard>
           <StyledAsideInfosCard>
             <h2>Ano</h2>
-            <p>General Motors</p>
-            <p>General Motors</p>
-            <p>General Motors</p>
-            <p>General Motors</p>
-            <p>General Motors</p>
+            <>
+              {car.map((ca) => {
+                <li>{ca.year}</li>;
+              })}
+            </>
           </StyledAsideInfosCard>
           <StyledAsideInfosCard>
             <h2>Combustível</h2>
-            <p>General Motors</p>
-            <p>General Motors</p>
-            <p>General Motors</p>
-            <p>General Motors</p>
-            <p>General Motors</p>
+            <>
+              {car.map((ca) => {
+                <li>{ca.fuel_type}</li>;
+              })}
+            </>
           </StyledAsideInfosCard>
         </StyledListAside>
         <div>
