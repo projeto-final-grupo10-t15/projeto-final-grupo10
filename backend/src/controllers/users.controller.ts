@@ -4,6 +4,7 @@ import { createuserService } from "../services/users/registerUser.service";
 import { deleteUserService } from "../services/users/deleteUser.service";
 import { User } from "../entities/users.entities";
 import { updateUserService } from "../services/users/updateUser.service";
+import { getUserbyIdService } from "../services/users/getUserbyIdService.service";
 
 /**
  * @swagger
@@ -109,4 +110,11 @@ export const updateUserController = async (req: Request, res: Response): Promise
   const updatedUser: TUserUpdateRequest = await updateUserService(userId, newUserData)
 
   return res.status(200).json(updatedUser)
+}
+
+export const getUserById = async (req: Request, res: Response): Promise<Response<User>> =>{
+  const userId: number = parseInt(req.params.id)
+  const user = await getUserbyIdService(userId)
+
+  return res.status(200).json(user)
 }
