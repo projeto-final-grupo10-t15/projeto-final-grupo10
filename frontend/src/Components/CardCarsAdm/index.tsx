@@ -271,7 +271,7 @@ const CardCarsAdm = () => {
           </div>
         </li>
       </ul>
-      {openModal && <UpdateModal toggleModal={toggleModal}><UpdateCarForm/></UpdateModal>}
+      
     </SectionCarsAdm>
   );
 };

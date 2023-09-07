@@ -2,22 +2,36 @@ import { SubmitHandler, useForm } from "react-hook-form"
 import { IUpdateCar } from "./interfaces"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { UpdateCarSchema } from "./schema"
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { CarContext } from "../../Contexts/Car"
 import { Input } from "../Input"
 import { UpdateForm } from "./styles"
+import { UpdateModal } from "../UpdateModal"
 
 
 
 
-export const UpdateCarForm = () =>{
-    const {updateCar} = useContext(CarContext)
+export const UpdateCarForm = ({id}:{id:number}) =>{
+    const {updateCar, deleteCar} = useContext(CarContext)
+    const [showDeleteModal, setShowDeleteModal] = useState(false);
     const {register, handleSubmit, formState: { errors }} = useForm<IUpdateCar>({
         resolver: zodResolver(UpdateCarSchema)
     })
 
+    const openDeleteModal = () => {
+        setShowDeleteModal(true);
+      };
+      
+      const closeDeleteModal = () => {
+        setShowDeleteModal(false);
+      };
+      
+
     const submit: SubmitHandler<IUpdateCar> = (data) =>{
         updateCar(id,data)
+    }
+    const handleDelete = () =>{
+        deleteCar(id)
     }
     return(
         <UpdateForm>
@@ -124,11 +138,26 @@ export const UpdateCarForm = () =>{
                         id="first_image"
                         />
                 <div className="btn__box">
-                    <button className="deleteBtn" type="submit">Excluir anúncio</button>
+                    <button className="deleteBtn" type="submit" onClick={openDeleteModal}>Excluir anúncio</button>
                     <button className="editBtn" type="submit">Salvar alterações</button>
 
                 </div>
             </form>
+            {showDeleteModal && (
+            <UpdateModal toggleModal={closeDeleteModal}>
+                <div>
+                    <p>Tem certeza de que deseja remover este anúncio?</p>
+                    <p>
+                            Essa ação não pode ser desfeita. 
+                            Isso excluirá permanentemente sua conta
+                            e removerá seus dados de nossos servidores
+                    </p>
+                    <button onClick={handleDelete}>Sim, excluir anúncio</button>
+                    <button onClick={closeDeleteModal}>Cancelar</button>
+                </div>
+            </UpdateModal>
+            )}
+
         </UpdateForm>
     )
 }
