@@ -1,27 +1,28 @@
 import { useContext } from "react";
 import { CardUserInfoContainer } from "./style";
 import { UserContext } from "../../Contexts/User";
+import { useLocation } from "react-router-dom";
 
-interface CardUserInfoProps {
-  button?: string;
-}
-
-const CardUserInfo = ({ button }: CardUserInfoProps) => {
-  const { user } = useContext(UserContext);
+const CardUserInfo = () => {
+  const { users } = useContext(UserContext);
+  const location = useLocation();
+  const HiddenbuttonCreateAd = () => {
+    if (location.pathname === "/adm") return (location.pathname = "/adm");
+  };
   return (
     <CardUserInfoContainer>
       <div className="perfil__box">
         <div className="perfil__box--img">
-          <img src={user?.profile_image} alt="perfil" />
+          <img src={users?.profile_image} alt="perfil" />
         </div>
         <div className="perfil__name">
-          <h3>{user?.name}</h3>
+          <h3>{users?.name}</h3>
           <p></p>
         </div>
         <div className="perfil__box--info">
-          <p>{user?.description}</p>
+          <p>{users?.description}</p>
         </div>
-        {button === "" && (
+        {HiddenbuttonCreateAd() && (
           <div className="containerBtn">
             <button>Criar Anuncio</button>
           </div>

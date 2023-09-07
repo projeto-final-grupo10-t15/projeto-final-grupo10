@@ -21,6 +21,7 @@ export const StyledInput = styled.fieldset`
     height: 48px;
     padding: 0.3rem;
     transform: scale(1);
+    cursor: pointer;
   }
 
   :focus {
@@ -61,6 +62,7 @@ export const StyledInputRange = styled.fieldset`
     /* height: 48px; */
     padding: 0.3rem;
     transform: scale(1);
+    cursor: pointer;
   }
 
   :focus {

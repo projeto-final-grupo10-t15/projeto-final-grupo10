@@ -12,6 +12,7 @@ type CarContextProps = {
   updateCar: (id: number | null, data: ICars) => void;
   listMyCars: (id: number | null) => void;
   listAllCars: () => void;
+  deleteCar: (id: number) => void;
 };
 
 const CarContext = createContext<CarContextProps>({} as CarContextProps);
@@ -127,6 +128,21 @@ const CarProvider = ({ children }: iChildren) => {
       console.log(error);
     }
   };
+
+  const deleteCar = async (id: number | null) => {
+    const token = localStorage.getItem("@TOKEN");
+    try {
+      const response = await api.delete(`/cars/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setCars(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <CarContext.Provider
       value={{
@@ -139,6 +155,7 @@ const CarProvider = ({ children }: iChildren) => {
         updateCar,
         listMyCars,
         listAllCars,
+        deleteCar
       }}
     >
       {children}

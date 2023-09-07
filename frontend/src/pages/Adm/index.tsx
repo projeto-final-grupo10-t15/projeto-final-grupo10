@@ -1,22 +1,22 @@
-import CardCarsAdm from "../../Components/CardCarsAdm";
+import Card from "../../Components/Card";
 import CardUserInfo from "../../Components/CardUserInfo";
+import { CardUserInfoContainer } from "../../Components/CardUserInfo/style";
 import { Footer, FooterPages } from "../../Components/Footer/Footer";
 import Header from "../../Components/Header/Header";
-import {
-  StyledContainer,
-  StyledContainerFooter,
-  StyledMainBack,
-} from "./style";
+import { ArticleUser } from "../User/style";
+import { StyledContainerFooter, StyledMainBack } from "./style";
 
 const Anunciante = () => {
   return (
     <>
+      <Header />
       <StyledMainBack>
-        <Header />
-        <CardUserInfo button={"Anunciante"} />
-        <StyledContainer>
-          <CardCarsAdm />
-        </StyledContainer>
+        <CardUserInfoContainer>
+          <CardUserInfo />
+        </CardUserInfoContainer>
+        <ArticleUser>
+          <Card />
+        </ArticleUser>
         <StyledContainerFooter>
           <FooterPages />
           <Footer />

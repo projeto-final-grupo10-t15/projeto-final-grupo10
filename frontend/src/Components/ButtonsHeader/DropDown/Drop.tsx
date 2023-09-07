@@ -1,4 +1,4 @@
-import Buttons from "../Buttons";
+import Buttons from "..";
 import { DropdownContainer } from "./style";
 
 interface iDrop {

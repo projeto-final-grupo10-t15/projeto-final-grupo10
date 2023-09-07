@@ -5,7 +5,7 @@ const StyledSectionCars = styled.section`
   height: 100%;
   display: flex;
   background-color: transparent;
-  padding: 0 0 0 20px;
+  padding: 20px;
 `;
 
 const StyledListCars = styled.ul`
@@ -13,6 +13,7 @@ const StyledListCars = styled.ul`
   height: 100%;
   display: flex;
   flex-direction: row;
+  align-items: flex-start;
   gap: 30.5px;
   flex-wrap: wrap;
 `;
@@ -25,7 +26,7 @@ const StyledCardProduct = styled.li`
   gap: 15px;
   margin-bottom: 20px;
   background-color: transparent;
-  padding: 5px;
+  padding: 8px;
   cursor: pointer;
 
   img {

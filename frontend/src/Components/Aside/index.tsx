@@ -55,8 +55,8 @@ export const AsideFilter = () => {
             className="range"
             id="id"
             type="range"
-            min="0"
-            max="100"
+            min="-1000"
+            max="1000"
           />
         </div>
       </StyledAsideFilter>
