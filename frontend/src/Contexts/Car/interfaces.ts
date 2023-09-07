@@ -6,9 +6,9 @@ export interface ICars {
     id?: number;
     brand: string;
     model: string;
-    year: number;
+    year: number | string;
     fuel_type: string;
-    mileage: number;
+    mileage: number | string;
     color: string;
     FIPE_price: number | string;
     price: number | string;
