@@ -1,35 +1,44 @@
 import { useContext } from "react";
-import perfilImg from "../../assets/perfil Img.svg";
 import { CardUserInfoContainer } from "./style";
 import { UserContext } from "../../Contexts/User";
+import { useLocation } from "react-router-dom";
+import { UpdateModal } from "../UpdateModal";
+import { CreateCarForm } from "../CreateCarForm";
 
-interface CardUserInfoProps {
-  button?: string;
-}
+const CardUserInfo = () => {
+  const { users } = useContext(UserContext);
+  const location = useLocation();
+  const HiddenbuttonCreateAd = () => {
+    if (location.pathname === "/adm") return (location.pathname = "/adm");
+  };
+  function toggleModal(event: MouseEvent<HTMLButtonElement, MouseEvent>): void {
+    throw new Error("Function not implemented.");
+  }
 
-const CardUserInfo = ({ button }: CardUserInfoProps) => {
-  const {user} = useContext(UserContext)
   return (
     <CardUserInfoContainer>
       <div className="perfil__box">
         <div className="perfil__box--img">
-          <img src={perfilImg} alt="perfil" />
+          <img src={users?.profile_image} alt="perfil" />
         </div>
         <div className="perfil__name">
-          <h3>{user?.name}</h3>
-          <p>Anunciante</p>
+          <h3>{users?.name}</h3>
+          <p></p>
         </div>
         <div className="perfil__box--info">
-          <p>
-            {user?.description}
-          </p>
+          <p>{users?.description}</p>
         </div>
-        {button === "Anunciante" && (
+        {HiddenbuttonCreateAd() && (
           <div className="containerBtn">
-            <button>Criar Anuncio</button>
+            <button onClick={toggleModal}>Criar Anuncio</button>
           </div>
         )}
       </div>
+      {openModal && (
+        <UpdateModal toggleModal={toggleModal}>
+          <CreateCarForm />
+        </UpdateModal>
+      )}
     </CardUserInfoContainer>
   );
 };

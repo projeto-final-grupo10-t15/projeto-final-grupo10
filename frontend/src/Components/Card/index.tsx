@@ -1,143 +1,59 @@
+import { useContext } from "react";
 import { StyledDivNameProfile, StyledIconUser } from "../../pages/Home/style";
-import { StyledCardProduct, StyledDivChildInfosCar, StyledDivInfosCars, StyledListCars, StyledSectionCars } from "./style";
+import {
+  StyledCardProduct,
+  StyledDivChildInfosCar,
+  StyledDivInfosCars,
+  StyledListCars,
+  StyledSectionCars,
+} from "./style";
+import { UserContext } from "../../Contexts/User";
+import { ButtonOuline } from "../Button";
+import { DivButtonsAdm } from "../Button/styles";
+import { useLocation } from "react-router-dom";
+import { CarContext } from "../../Contexts/Car";
 
 export const Card = () => {
+  const { cars } = useContext(CarContext);
+  const { users } = useContext(UserContext);
+  const location = useLocation();
+
+  const HiddenbuttonsAdm = () => {
+    if (location.pathname === "/adm") return (location.pathname = "/adm");
+  };
+
   return (
     <StyledSectionCars>
       <StyledListCars>
-        <StyledCardProduct>
-          <img src="src/assets/carsTest.png" alt="" />
-          <h3>Nome do Carro - Modelo</h3>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem...
-          </p>
-          <StyledDivNameProfile>
-            <span>R</span>
-            <h4>Nome do vendedor</h4>
-          </StyledDivNameProfile>
-          <StyledDivInfosCars>
-            <StyledDivChildInfosCar>
-              <StyledIconUser>0 Km</StyledIconUser>
-              <StyledIconUser>2019</StyledIconUser>
-            </StyledDivChildInfosCar>
-            <p>R$ 20.000</p>
-          </StyledDivInfosCars>
-        </StyledCardProduct>
-        <StyledCardProduct>
-          <img src="src/assets/carsTest.png" alt="" />
-          <h3>Nome do Carro - Modelo</h3>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem...
-          </p>
-          <StyledDivNameProfile>
-            <span>R</span>
-            <h4>Nome do vendedor</h4>
-          </StyledDivNameProfile>
-          <StyledDivInfosCars>
-            <StyledDivChildInfosCar>
-              <StyledIconUser>0 Km</StyledIconUser>
-              <StyledIconUser>2019</StyledIconUser>
-            </StyledDivChildInfosCar>
-            <p>R$ 25.000</p>
-          </StyledDivInfosCars>
-        </StyledCardProduct>
-        <StyledCardProduct>
-          <img src="src/assets/carsTest.png" alt="" />
-          <h3>Nome do Carro - Modelo</h3>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem...
-          </p>
-          <StyledDivNameProfile>
-            <span>R</span>
-            <h4>Nome do vendedor</h4>
-          </StyledDivNameProfile>
-          <StyledDivInfosCars>
-            <StyledDivChildInfosCar>
-              <StyledIconUser>0 Km</StyledIconUser>
-              <StyledIconUser>2019</StyledIconUser>
-            </StyledDivChildInfosCar>
-            <p>R$ 20.000</p>
-          </StyledDivInfosCars>
-        </StyledCardProduct>
-        <StyledCardProduct>
-          <img src="src/assets/carsTest.png" alt="" />
-          <h3>Nome do Carro - Modelo</h3>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem...
-          </p>
-          <StyledDivNameProfile>
-            <span>R</span>
-            <h4>Nome do vendedor</h4>
-          </StyledDivNameProfile>
-          <StyledDivInfosCars>
-            <StyledDivChildInfosCar>
-              <StyledIconUser>0 Km</StyledIconUser>
-              <StyledIconUser>2019</StyledIconUser>
-            </StyledDivChildInfosCar>
-            <p>R$ 20.000</p>
-          </StyledDivInfosCars>
-        </StyledCardProduct>
-        <StyledCardProduct>
-          <img src="src/assets/carsTest.png" alt="" />
-          <h3>Nome do Carro - Modelo</h3>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem...
-          </p>
-          <StyledDivNameProfile>
-            <span>R</span>
-            <h4>Nome do vendedor</h4>
-          </StyledDivNameProfile>
-          <StyledDivInfosCars>
-            <StyledDivChildInfosCar>
-              <StyledIconUser>0 Km</StyledIconUser>
-              <StyledIconUser>2019</StyledIconUser>
-            </StyledDivChildInfosCar>
-            <p>R$ 20.000</p>
-          </StyledDivInfosCars>
-        </StyledCardProduct>
-        <StyledCardProduct>
-          <img src="src/assets/carsTest.png" alt="" />
-          <h3>Nome do Carro - Modelo</h3>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem...
-          </p>
-          <StyledDivNameProfile>
-            <span>R</span>
-            <h4>Nome do vendedor</h4>
-          </StyledDivNameProfile>
-          <StyledDivInfosCars>
-            <StyledDivChildInfosCar>
-              <StyledIconUser>0 Km</StyledIconUser>
-              <StyledIconUser>2019</StyledIconUser>
-            </StyledDivChildInfosCar>
-            <p>R$ 20.000</p>
-          </StyledDivInfosCars>
-        </StyledCardProduct>
-        <StyledCardProduct>
-          <img src="src/assets/carsTest.png" alt="" />
-          <h3>Nome do Carro - Modelo</h3>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem...
-          </p>
-          <StyledDivNameProfile>
-            <span>R</span>
-            <h4>Nome do vendedor</h4>
-          </StyledDivNameProfile>
-          <StyledDivInfosCars>
-            <StyledDivChildInfosCar>
-              <StyledIconUser>0 Km</StyledIconUser>
-              <StyledIconUser>2019</StyledIconUser>
-            </StyledDivChildInfosCar>
-            <p>R$ 20.000</p>
-          </StyledDivInfosCars>
-        </StyledCardProduct>
+        {cars.map((car) => (
+          <StyledCardProduct key={car.id}>
+            <>
+              {/* <img src={car.first_image} alt="photoCar" /> */}
+              <img src={"src/assets/carsTest.png"} alt="photoCar" />
+              <h3>
+                {car.brand} - <span>{car.model}</span>
+              </h3>
+              <p>{car.description}</p>
+            </>
+            <StyledDivNameProfile>
+              <span>{users?.name}</span>
+              <h4>{users?.name}</h4>
+            </StyledDivNameProfile>
+            <StyledDivInfosCars>
+              <StyledDivChildInfosCar>
+                <StyledIconUser>{car.mileage} km</StyledIconUser>
+                <StyledIconUser>{car.year}</StyledIconUser>
+              </StyledDivChildInfosCar>
+              <p>R$ {car.price}</p>
+            </StyledDivInfosCars>
+            {HiddenbuttonsAdm() && (
+              <DivButtonsAdm>
+                <ButtonOuline text="Editar" size="small"></ButtonOuline>
+                <ButtonOuline text="Ver detalhes" size="medium"></ButtonOuline>
+              </DivButtonsAdm>
+            )}
+          </StyledCardProduct>
+        ))}
       </StyledListCars>
     </StyledSectionCars>
   );

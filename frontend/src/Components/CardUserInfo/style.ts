@@ -67,7 +67,13 @@ export const CardUserInfoContainer = styled.div`
       cursor: pointer;
       color: var(--brand1);
     }
+
+    button:hover {
+      border: 2px solid var(--brand-brand-1, #4529e6);
+      font-weight: 500;
+    }
   }
+
   @media (min-width: 768px) {
     .perfil__box {
       width: 77%;

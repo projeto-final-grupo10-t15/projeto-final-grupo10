@@ -4,7 +4,6 @@ export const MainContainer = styled.main`
   width: 100%;
   height: 100%;
   margin: 0 auto;
-  max-height: max-content;
   padding: 0 0 100px 0;
   display: flex;
   flex-direction: column;
@@ -31,7 +30,7 @@ export const UserProfile = styled.div`
 
 export const ArticleUser = styled.article`
   width: 100%;
-  height: max-content;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;

@@ -29,10 +29,6 @@ export const Footer = () => {
 export const FooterPages = () => {
   return (
     <StyledFooterPages>
-      <img
-        src="src/assets/angulo-duplo-pequeno-esquerdo.png"
-        alt="arrowPrevious"
-      />
       <a href="">Anterior</a>
       <div>
         <a>1</a>
@@ -40,7 +36,6 @@ export const FooterPages = () => {
         <a>2</a>
       </div>
       <a href="">Seguinte</a>
-      <img src="src/assets/angulo-duplo-pequeno-direito.png" alt="arrowNext" />
     </StyledFooterPages>
   );
 };

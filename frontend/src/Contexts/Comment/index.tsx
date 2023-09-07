@@ -20,15 +20,16 @@ const CommentProvider = ({ children }: iChildren) => {
   const [comment, setComment] = useState<IComment[] | []>([]);
 
   useEffect(() => {
-    const Comments = async () => {
-      try {
-        const response = await api.get("/comments");
-        setComment(response.data);
-      } catch (error) {
-        console.log(error);
-      }
+    const Comment = async () => {
+      const token = localStorage.getItem("@TOKEN");
+      const response = await api.get("/comments", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setComment(response.data);
     };
-    Comments();
+    Comment();
   }, []);
 
   const createComment = async (data: IComment) => {
@@ -98,7 +99,7 @@ const CommentProvider = ({ children }: iChildren) => {
   const deleteComment = async (id: number | null) => {
     const token = localStorage.getItem("@TOKEN");
     try {
-      const response = await api.delete(`/users/${id}/comments`, {
+      const response = await api.delete(`/comments/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
