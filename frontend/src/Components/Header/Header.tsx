@@ -3,7 +3,7 @@ import logo from "../../assets/Logo.svg";
 import hamburguerIcon from "../../assets/bars.png";
 import closeIcon from "../../assets/xmark.svg";
 import { StyledHeader } from "./styles";
-import Buttons from "../ButtonsHeader/Buttons";
+import Buttons from "../ButtonsHeader";
 import Drop from "../ButtonsHeader/DropDown/Drop";
 import { Link } from "react-router-dom";
 

@@ -41,7 +41,7 @@ const StyledAsideInfosCard = styled.li`
 
   button {
     background-color: transparent;
-    font-size: 14px;
+    font-size: 16px;
     max-width: 20px;
     color: var(--grey3);
   }

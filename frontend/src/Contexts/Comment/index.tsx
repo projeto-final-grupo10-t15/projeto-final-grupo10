@@ -99,7 +99,7 @@ const CommentProvider = ({ children }: iChildren) => {
   const deleteComment = async (id: number | null) => {
     const token = localStorage.getItem("@TOKEN");
     try {
-      const response = await api.delete(`/users/${id}/comments`, {
+      const response = await api.delete(`/comments/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
