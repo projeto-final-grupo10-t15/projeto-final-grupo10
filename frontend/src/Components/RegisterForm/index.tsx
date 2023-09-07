@@ -163,7 +163,7 @@ export const RegisterForm = () => {
                       value="Comprador"
                       defaultChecked
                       checked={userType === "Comprador"}
-                      {...register("account_type") }
+                      {...register("account_type")}
                       onChange={handleUserTypeChange}
                       name="userType"
                       disabled={loading}
@@ -172,15 +172,13 @@ export const RegisterForm = () => {
                   </label>
                   <label
                     htmlFor="announcer"
-                    className={`choice ${
-                      userType === "Anunciante" ? "selected" : ""
-                    }`}
+                    className={`choice ${userType === "" ? "selected" : ""}`}
                   >
                     <input
                       id="announcer"
                       type="radio"
-                      value="Anunciante"
-                      checked={userType === "Anunciante"}
+                      value=""
+                      checked={userType === ""}
                       {...register("account_type")}
                       onChange={handleUserTypeChange}
                       name="userType"
@@ -208,7 +206,7 @@ export const RegisterForm = () => {
                 />
                 {password !== confirmPassword && <p>As senhas não coincidem</p>}
 
-                <button className="submitBtn" type="submit">
+                <button className="submitBtn" type="submit" disabled={loading}>
                   {loading ? "Cadastrando..." : "Finalizar cadastro"}
                 </button>
               </form>

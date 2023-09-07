@@ -23,14 +23,15 @@ type IUserContext = {
   ) => Promise<void>;
   logout: () => void;
   updateUser: (data: IUserUpdate) => Promise<void>;
-  user: IUser | null;
+  users: IUser | null;
+  setUsers: React.Dispatch<React.SetStateAction<IUser | null>>;
 };
 
 export const UserContext = createContext<IUserContext>({} as IUserContext);
 
 export const UserProvider = ({ children }: IUserProviderProps) => {
   const [loading, setLoading] = useState(false);
-  const [user, setUser] = useState<IUser | null>(null);
+  const [users, setUsers] = useState<IUser | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -43,6 +44,19 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
     setLoading(false);
   }, []);
 
+  useEffect(() => {
+    const Users = async () => {
+      const token = localStorage.getItem("@TOKEN");
+      const response = await api.get("/users", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setUsers(response.data);
+    };
+    Users();
+  }, []);
+
   const registerUser = async (
     data: IUserRegister,
     setLoading: React.Dispatch<React.SetStateAction<boolean>>
@@ -50,10 +64,8 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
     try {
       setLoading(true);
       const response = await api.post("/users", data);
-    
-      setUser(response.data.user);
+      setUsers(response.data.user);
       navigate("/login");
-      setLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -64,6 +76,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
     setLoading: React.Dispatch<React.SetStateAction<boolean>>
   ): Promise<void> => {
     try {
+      setLoading(true);
       const response = await api.post<LoginResponse>("/login", data);
       const { token, id } = response.data;
       api.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -78,7 +91,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
 
   const logout = (): void => {
     localStorage.removeItem("@TOKEN");
-    setUser(null);
+    setUsers(null);
     navigate("/");
   };
 
@@ -88,7 +101,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
     try {
       const response = await api.patch(`/users/${id}`, data);
       api.defaults.headers.common.Authorization = `Bearer ${token}`;
-      setUser(response.data);
+      setUsers(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -102,7 +115,8 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
         registerUser,
         logout,
         updateUser,
-        user,
+        users,
+        setUsers,
       }}
     >
       {children}

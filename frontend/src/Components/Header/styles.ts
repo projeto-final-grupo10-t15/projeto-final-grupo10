@@ -8,7 +8,7 @@ export const StyledHeader = styled.header`
   padding: 0 20px;
   height: 70px;
   background-color: #fff;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.25);
   position: relative;
   .menuToggle {
     display: block;

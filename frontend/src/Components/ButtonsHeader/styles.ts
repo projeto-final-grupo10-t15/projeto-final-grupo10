@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-export const StyledButton = styled.button`
+export const StyledDivButton = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
@@ -24,6 +24,8 @@ export const StyledButton = styled.button`
 
   .loginButton:hover {
     transform: scale(1);
+    font-size: 16px;
+    color: var(--brand1);
   }
 
   .registerButton {
@@ -46,6 +48,7 @@ export const StyledButton = styled.button`
     transform: scale(1.1);
     background-color: var(--brand2);
     color: var(--whiteFixed);
+    border-radius: 10px;
   }
 
   @media (min-width: 768px) {

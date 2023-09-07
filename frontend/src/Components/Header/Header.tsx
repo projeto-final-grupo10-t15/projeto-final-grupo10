@@ -3,8 +3,9 @@ import logo from "../../assets/Logo.svg";
 import hamburguerIcon from "../../assets/bars.png";
 import closeIcon from "../../assets/xmark.svg";
 import { StyledHeader } from "./styles";
-import Buttons from "../ButtonsHeader/Buttons";
+import Buttons from "../ButtonsHeader";
 import Drop from "../ButtonsHeader/DropDown/Drop";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -24,10 +25,10 @@ const Header = () => {
 
   return (
     <StyledHeader>
-      <div className="header__logo">
+      <Link to={"/"}>
         <img src={logo} alt="Logo" />
-      </div>
-      <div className="menuToggle" onClick={() => setShowMenu(!showMenu)}>
+      </Link>
+      <div className="menuToggle" onClick={() => setShowMenu(showMenu)}>
         <img src={showMenu ? closeIcon : hamburguerIcon} alt="menu toggle" />
       </div>
       {isMobile ? <Drop show={showMenu} /> : <Buttons />}

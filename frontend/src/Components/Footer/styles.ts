@@ -70,6 +70,10 @@ const StyledFooterPages = styled.footer`
     font-weight: 600;
   }
 
+  a:hover {
+    color: var(--grey1);
+  }
+
   div {
     display: flex;
     flex-direction: row;

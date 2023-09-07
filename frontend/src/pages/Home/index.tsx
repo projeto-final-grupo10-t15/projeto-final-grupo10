@@ -1,6 +1,6 @@
 import { AsideFilter } from "../../Components/Aside";
 import Card from "../../Components/Card";
-import { FooterPages } from "../../Components/Footer/Footer";
+import { Footer, FooterPages } from "../../Components/Footer/Footer";
 import Header from "../../Components/Header/Header";
 import {
   StyledMainHome,
@@ -9,9 +9,7 @@ import {
   StyledImagePrimaryHome,
 } from "./style";
 
-
 export const HomePage = () => {
-  
   return (
     <>
       <Header />
@@ -25,6 +23,7 @@ export const HomePage = () => {
         </StyledArticlePrimary>
       </StyledMainHome>
       <FooterPages />
+      <Footer />
     </>
   );
 };

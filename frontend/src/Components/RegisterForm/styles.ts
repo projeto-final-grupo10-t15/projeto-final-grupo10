@@ -14,7 +14,7 @@ export const StyledRegisterForm = styled.main`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 1rem 0;
+    margin: 3.2rem 0;
     gap: 1.5rem;
     border-radius: 4px;
     background-color: var(--grey10);

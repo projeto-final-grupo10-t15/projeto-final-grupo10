@@ -2,14 +2,9 @@ import { styled } from "styled-components";
 
 const StyledMainBack = styled.main`
   background-color: var(--grey8);
-  height: 100vh;
-  width: 100vw;
-`;
-
-const StyledContainer = styled.div`
   width: 100%;
-  flex-grow: 1;
-  margin-bottom: 0rem;
+  height: 100%;
+  gap: 50px;
 `;
 
 const StyledContainerFooter = styled.div`
@@ -21,4 +16,4 @@ const StyledContainerFooter = styled.div`
   align-items: center;
 `;
 
-export { StyledContainer, StyledMainBack, StyledContainerFooter };
+export { StyledMainBack, StyledContainerFooter };
