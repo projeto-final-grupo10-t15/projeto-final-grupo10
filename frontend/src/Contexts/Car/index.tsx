@@ -24,12 +24,8 @@ const CarProvider = ({ children }: iChildren) => {
 
   useEffect(() => {
     const Cars = async () => {
-      const token = localStorage.getItem("@TOKEN");
-      const response = await api.get("/cars", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      
+      const response = await api.get<ICars[]>("/cars");
       setCars(response.data);
     };
     Cars();
@@ -80,7 +76,7 @@ const CarProvider = ({ children }: iChildren) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      setCars(response.data);
+      setCars((prevCars) => [...prevCars, response.data]);
     } catch (error) {
       console.log(error);
     }

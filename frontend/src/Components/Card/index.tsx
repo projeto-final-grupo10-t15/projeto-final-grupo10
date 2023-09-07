@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { StyledDivNameProfile, StyledIconUser } from "../../pages/Home/style";
 import {
   StyledCardProduct,
@@ -7,16 +7,25 @@ import {
   StyledListCars,
   StyledSectionCars,
 } from "./style";
+import { CarContext } from "../../Contexts/Car";
 import { UserContext } from "../../Contexts/User";
 import { ButtonOuline } from "../Button";
 import { DivButtonsAdm } from "../Button/styles";
 import { useLocation } from "react-router-dom";
-import { CarContext } from "../../Contexts/Car";
+import { UpdateModal } from "../UpdateModal";
+import { UpdateCarForm } from "../UpdateCarForm";
 
 export const Card = () => {
   const { cars } = useContext(CarContext);
   const { users } = useContext(UserContext);
   const location = useLocation();
+  const [openModal, setOpenModal] = useState<boolean>(false)
+  const [selectedCarId, setSelectedCarId] = useState(-1)
+
+  const toggleModal = <T extends number | string = number | string>(carId?: T) => {
+    setSelectedCarId(carId as number )
+    setOpenModal(!openModal)
+  }
 
   const HiddenbuttonsAdm = () => {
     if (location.pathname === "/adm") return (location.pathname = "/adm");
@@ -48,13 +57,16 @@ export const Card = () => {
             </StyledDivInfosCars>
             {HiddenbuttonsAdm() && (
               <DivButtonsAdm>
-                <ButtonOuline text="Editar" size="small"></ButtonOuline>
-                <ButtonOuline text="Ver detalhes" size="medium"></ButtonOuline>
+                <ButtonOuline text="Editar" size="small" onClick={()=>{if(car.id){
+                  toggleModal(car.id)
+                }}}></ButtonOuline>
+                <ButtonOuline text="Ver detalhes" size="medium" onClick={()=>{console.log("clicou")}}></ButtonOuline>
               </DivButtonsAdm>
             )}
           </StyledCardProduct>
         ))}
       </StyledListCars>
+      {openModal && <UpdateModal toggleModal={toggleModal}><UpdateCarForm id={selectedCarId}/></UpdateModal>}
     </StyledSectionCars>
   );
 };
