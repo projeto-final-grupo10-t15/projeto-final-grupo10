@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { useContext } from "react";
 import { CardUserInfoContainer } from "./style";
 import { UserContext } from "../../Contexts/User";
@@ -9,6 +10,25 @@ const CardUserInfo = () => {
   const HiddenbuttonCreateAd = () => {
     if (location.pathname === "/adm") return (location.pathname = "/adm");
   };
+=======
+import { useContext, useState } from "react";
+import perfilImg from "../../assets/perfil Img.svg";
+import { CardUserInfoContainer } from "./style";
+import { UserContext } from "../../Contexts/User";
+import { UpdateModal } from "../UpdateModal";
+import { CreateCarForm } from "../CreateCarForm";
+
+interface CardUserInfoProps {
+  button?: string;
+}
+
+const CardUserInfo = ({ button }: CardUserInfoProps) => {
+  const {user} = useContext(UserContext)
+  const [openModal, setOpenModal] = useState<boolean>(false)
+  const toggleModal = () => setOpenModal(!openModal)
+
+  
+>>>>>>> 9c9f6a5b057c4fb29c4afee5ffc4be90387ac5b5
   return (
     <CardUserInfoContainer>
       <div className="perfil__box">
@@ -24,10 +44,11 @@ const CardUserInfo = () => {
         </div>
         {HiddenbuttonCreateAd() && (
           <div className="containerBtn">
-            <button>Criar Anuncio</button>
+            <button onClick={toggleModal}>Criar Anuncio</button>
           </div>
         )}
       </div>
+      {openModal && <UpdateModal toggleModal={toggleModal}><CreateCarForm/></UpdateModal>}
     </CardUserInfoContainer>
   );
 };
