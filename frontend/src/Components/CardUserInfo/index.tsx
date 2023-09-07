@@ -1,7 +1,9 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import perfilImg from "../../assets/perfil Img.svg";
 import { CardUserInfoContainer } from "./style";
 import { UserContext } from "../../Contexts/User";
+import { UpdateModal } from "../UpdateModal";
+import { CreateCarForm } from "../CreateCarForm";
 
 interface CardUserInfoProps {
   button?: string;
@@ -9,6 +11,10 @@ interface CardUserInfoProps {
 
 const CardUserInfo = ({ button }: CardUserInfoProps) => {
   const {user} = useContext(UserContext)
+  const [openModal, setOpenModal] = useState<boolean>(false)
+  const toggleModal = () => setOpenModal(!openModal)
+
+  
   return (
     <CardUserInfoContainer>
       <div className="perfil__box">
@@ -26,10 +32,11 @@ const CardUserInfo = ({ button }: CardUserInfoProps) => {
         </div>
         {button === "Anunciante" && (
           <div className="containerBtn">
-            <button>Criar Anuncio</button>
+            <button onClick={toggleModal}>Criar Anuncio</button>
           </div>
         )}
       </div>
+      {openModal && <UpdateModal toggleModal={toggleModal}><CreateCarForm/></UpdateModal>}
     </CardUserInfoContainer>
   );
 };

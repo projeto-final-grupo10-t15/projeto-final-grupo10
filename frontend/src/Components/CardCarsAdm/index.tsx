@@ -1,6 +1,11 @@
 import SectionCarsAdm from "./style";
 import imgCar from "../../assets/carsTest.png";
+import { useState } from "react";
+import { UpdateModal } from "../UpdateModal";
+import { UpdateCarForm } from "../UpdateCarForm";
 const CardCarsAdm = () => {
+  const [openModal, setOpenModal] = useState<boolean>(false)
+  const toggleModal = () => setOpenModal(!openModal)
   return (
     <SectionCarsAdm>
       <ul>
@@ -20,9 +25,10 @@ const CardCarsAdm = () => {
             <span>R$ 20.000</span>
           </div>
           <div className="boxButtons">
-            <button> Editar </button>
+            <button type="button" onClick={toggleModal}> Editar </button>
             <button> Ver detalhes </button>
           </div>
+          
         </li>
         <li>
           <span className="actived">Ativo</span>
@@ -265,6 +271,7 @@ const CardCarsAdm = () => {
           </div>
         </li>
       </ul>
+      {openModal && <UpdateModal toggleModal={toggleModal}><UpdateCarForm/></UpdateModal>}
     </SectionCarsAdm>
   );
 };
