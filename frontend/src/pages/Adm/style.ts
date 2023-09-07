@@ -2,8 +2,8 @@ import { styled } from "styled-components";
 
 const StyledMainBack = styled.main`
   background-color: var(--grey8);
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
 `;
 
 const StyledContainer = styled.div`

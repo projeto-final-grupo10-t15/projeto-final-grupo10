@@ -5,7 +5,7 @@ import {
   StyledAsideInfosCard,
 } from "../../Components/Aside/styled";
 import { CarContext } from "../../Contexts/Car";
-import { Input } from "../Input";
+import { InputRange } from "../Input";
 
 export const AsideFilter = () => {
   const { cars } = useContext(CarContext);
@@ -47,11 +47,17 @@ export const AsideFilter = () => {
         </StyledListAside>
         <div>
           <h2>Km</h2>
-          <Input id="id" type="range" min="0" max="10" />
+          <InputRange id="id" type="range" min="0" max="10" />
         </div>
         <div>
           <h2>Preço</h2>
-          <Input id="id" type="range" min="0" max="10" />
+          <InputRange
+            className="range"
+            id="id"
+            type="range"
+            min="0"
+            max="100"
+          />
         </div>
       </StyledAsideFilter>
     </>

@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { ICars, iChildren } from "./interfaces";
 import { api } from "../../services/api";
 
@@ -19,6 +19,19 @@ const CarContext = createContext<CarContextProps>({} as CarContextProps);
 const CarProvider = ({ children }: iChildren) => {
   const [cars, setCars] = useState<ICars[] | []>([]);
   const [filters, setFilters] = useState<ICars[] | null>([]);
+
+  useEffect(() => {
+    const Cars = async () => {
+      const token = localStorage.getItem("@TOKEN");
+      const response = await api.get("/cars", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setCars(response.data);
+    };
+    Cars();
+  }, []);
 
   const ApplyFilterCar = () => {
     let filteredCars = cars;

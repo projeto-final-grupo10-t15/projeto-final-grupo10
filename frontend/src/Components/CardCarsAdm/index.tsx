@@ -22,8 +22,8 @@ const CardCarsAdm = () => {
               <span>R$ {car.price}</span>
             </div>
             <div className="boxButtons">
-              <button> Editar </button>
-              <button> Ver detalhes </button>
+              <button>Editar</button>
+              <button>Ver detalhes</button>
             </div>
           </li>
         ))}

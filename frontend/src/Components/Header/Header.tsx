@@ -5,6 +5,7 @@ import closeIcon from "../../assets/xmark.svg";
 import { StyledHeader } from "./styles";
 import Buttons from "../ButtonsHeader/Buttons";
 import Drop from "../ButtonsHeader/DropDown/Drop";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -24,9 +25,9 @@ const Header = () => {
 
   return (
     <StyledHeader>
-      <div className="header__logo">
+      <Link to={"/"}>
         <img src={logo} alt="Logo" />
-      </div>
+      </Link>
       <div className="menuToggle" onClick={() => setShowMenu(showMenu)}>
         <img src={showMenu ? closeIcon : hamburguerIcon} alt="menu toggle" />
       </div>

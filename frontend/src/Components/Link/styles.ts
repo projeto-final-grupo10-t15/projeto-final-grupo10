@@ -39,6 +39,7 @@ export const StyledLinkRegister = styled(Link)`
     background-color: var(--brand2);
     color: var(--whiteFixed);
     border-radius: 10px;
+    border: 1.8px solid var(--brand1);
   }
 
   @media (min-width: 768px) {
