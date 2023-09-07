@@ -152,7 +152,7 @@ const CarProvider = ({ children }: iChildren) => {
         updateCar,
         listMyCars,
         listAllCars,
-        deleteCar
+        deleteCar,
       }}
     >
       {children}

@@ -18,6 +18,7 @@ export const CreateCarForm = () =>{
             data.mileage = parseInt(data.mileage as string);
           }
         createCar(data)
+        
     }
     return(
         <CreateForm>

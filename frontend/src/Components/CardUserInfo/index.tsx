@@ -1,4 +1,7 @@
+
 import { useContext, useState } from "react";
+
+
 import { CardUserInfoContainer } from "./style";
 import { UserContext } from "../../Contexts/User";
 import { useLocation } from "react-router-dom";
@@ -32,7 +35,11 @@ const CardUserInfo = () => {
           </div>
         )}
       </div>
-      {openModal && <UpdateModal toggleModal={toggleModal}><CreateCarForm/></UpdateModal>}
+      {openModal && (
+        <UpdateModal toggleModal={toggleModal}>
+          <CreateCarForm />
+        </UpdateModal>
+      )}
     </CardUserInfoContainer>
   );
 };
