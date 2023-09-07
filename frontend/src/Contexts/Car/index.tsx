@@ -4,40 +4,24 @@ import { api } from "../../services/api";
 import { IUpdateCar } from "../../Components/UpdateCarForm/interfaces";
 
 type CarContextProps = {
-<<<<<<< HEAD
   cars: ICars[] | [];
   setCars: React.Dispatch<React.SetStateAction<ICars[] | []>>;
   filters: ICars[] | null;
   setFilters: React.Dispatch<React.SetStateAction<ICars[] | null>>;
   ApplyFilterCar: () => void;
   createCar: (data: ICars) => void;
-  updateCar: (id: number | null, data: ICars) => void;
-  listMyCars: (id: number | null) => void;
-  listAllCars: () => void;
-  deleteCar: (id: number) => void;
-=======
-  car: ICars[] | [];
-  setCar: React.Dispatch<React.SetStateAction<ICars[] | []>>;
-  createCar: ( data: ICars) => void;
   updateCar: (id: number | null, data: IUpdateCar) => void;
   listMyCars: (id: number | null) => void;
   listAllCars: () => void;
-  modalIsOpen: boolean
-  setModalIsOpen: React.Dispatch<React.SetStateAction<boolean>>
->>>>>>> 9c9f6a5b057c4fb29c4afee5ffc4be90387ac5b5
+  deleteCar: (id: number) => void;
 };
 
 const CarContext = createContext<CarContextProps>({} as CarContextProps);
 
 const CarProvider = ({ children }: iChildren) => {
-<<<<<<< HEAD
   const [cars, setCars] = useState<ICars[] | []>([]);
   const [filters, setFilters] = useState<ICars[] | null>([]);
 
-=======
-  const [car , setCar] = useState<ICars[] | []>([]);
-  const [modalIsOpen, setModalIsOpen] = useState<boolean>(false)
->>>>>>> 9c9f6a5b057c4fb29c4afee5ffc4be90387ac5b5
   useEffect(() => {
     const Cars = async () => {
       const token = localStorage.getItem("@TOKEN");
@@ -51,7 +35,6 @@ const CarProvider = ({ children }: iChildren) => {
     Cars();
   }, []);
 
-<<<<<<< HEAD
   const ApplyFilterCar = () => {
     let filteredCars = cars;
 
@@ -90,9 +73,6 @@ const CarProvider = ({ children }: iChildren) => {
   };
 
   const createCar = async (data: ICars) => {
-=======
-  const createCar = async ( data: ICars): Promise<void> => {
->>>>>>> 9c9f6a5b057c4fb29c4afee5ffc4be90387ac5b5
     const token = localStorage.getItem("@TOKEN");
     try {
       const response = await api.post(`/cars`, data, {
@@ -165,7 +145,6 @@ const CarProvider = ({ children }: iChildren) => {
   };
 
   return (
-<<<<<<< HEAD
     <CarContext.Provider
       value={{
         cars,
@@ -177,21 +156,9 @@ const CarProvider = ({ children }: iChildren) => {
         updateCar,
         listMyCars,
         listAllCars,
-        deleteCar
+        deleteCar,
       }}
     >
-=======
-    <CarContext.Provider value={{ 
-      car, 
-      setCar, 
-      createCar, 
-      updateCar, 
-      listMyCars, 
-      listAllCars,
-      modalIsOpen , 
-      setModalIsOpen 
-    }}>
->>>>>>> 9c9f6a5b057c4fb29c4afee5ffc4be90387ac5b5
       {children}
     </CarContext.Provider>
   );

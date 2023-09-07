@@ -7,11 +7,11 @@ import {
   StyledListCars,
   StyledSectionCars,
 } from "./style";
-import { CarContext } from "../../Contexts/Car";
 import { UserContext } from "../../Contexts/User";
 import { ButtonOuline } from "../Button";
 import { DivButtonsAdm } from "../Button/styles";
 import { useLocation } from "react-router-dom";
+import { CarContext } from "../../Contexts/Car";
 
 export const Card = () => {
   const { cars } = useContext(CarContext);
