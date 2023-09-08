@@ -25,6 +25,7 @@ export const Card = () => {
   const toggleModal = <T extends number | string = number | string>(carId?: T) => {
     setSelectedCarId(carId as number )
     setOpenModal(!openModal)
+
   }
 
   const HiddenbuttonsAdm = () => {
@@ -56,16 +57,14 @@ export const Card = () => {
             </StyledDivInfosCars>
             {HiddenbuttonsAdm() && (
               <DivButtonsAdm>
-                <ButtonOuline text="Editar" size="small" onClick={()=>{if(car.id){
-                  toggleModal(car.id)
-                }}}></ButtonOuline>
-                <ButtonOuline text="Ver detalhes" size="medium" onClick={()=>{console.log("clicou")}}></ButtonOuline>
+                <ButtonOuline text="Editar" size="small" onClick={() => {if(car.id){toggleModal(car.id)}}}></ButtonOuline>
+                <ButtonOuline text="Ver detalhes" size="medium" onClick={()=>{}}></ButtonOuline>
               </DivButtonsAdm>
             )}
           </StyledCardProduct>
         ))}
+      {openModal && (<UpdateModal toggleModal={toggleModal}><UpdateCarForm id={selectedCarId}/></UpdateModal>)}
       </StyledListCars>
-      {openModal && <UpdateModal toggleModal={toggleModal}><UpdateCarForm id={selectedCarId}/></UpdateModal>}
     </StyledSectionCars>
   );
 };

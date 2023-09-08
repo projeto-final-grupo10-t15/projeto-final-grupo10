@@ -20,13 +20,13 @@ export class Car {
   model: string;
 
   @Column({ type: "int" })
-  year: number;
+  year: number | string;
 
   @Column({ type: "varchar" }) // ENUM
   fuel_type: string;
 
   @Column({ type: "int" })
-  mileage: number;
+  mileage: number | string;
 
   @Column({ type: "varchar" })
   color: string;
@@ -49,6 +49,6 @@ export class Car {
   @ManyToOne(() => User, (user) => user.cars)
   user: User;
 
-  @OneToMany(() => Comments, (comments) => comments.car)
+  @OneToMany(() => Comments, (comments) => comments.car, {onDelete:"CASCADE"})
   comments: Comments[];
 }

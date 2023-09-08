@@ -32,8 +32,8 @@ export const updateCarrService = async (carData: TCarUpdate,carId: number): Prom
     if(carData.fuel_type !== undefined){
       oldCar.fuel_type = carData.fuel_type
     }
-    if(carData.mileage !== undefined){
-      oldCar.mileage = carData.mileage
+    if (typeof carData.mileage === 'string' || typeof carData.mileage === 'number') {
+      oldCar.mileage = typeof carData.mileage === 'string' ? parseInt(carData.mileage, 10) : carData.mileage;
     }
     if(carData.model !== undefined){
       oldCar.model = carData.model
@@ -41,8 +41,8 @@ export const updateCarrService = async (carData: TCarUpdate,carId: number): Prom
     if(carData.price !== undefined){
       oldCar.price = carData.price
     }
-    if(carData.year !== undefined){
-      oldCar.year = carData.year
+    if (typeof carData.year === 'string' || typeof carData.year === 'number') {
+      oldCar.year = typeof carData.year === 'string' ? parseInt(carData.year, 10) : carData.year;
     }
     carRepository.merge(oldCar, oldCar)
     const updatedCar = await carRepository.save(oldCar);
