@@ -23,15 +23,15 @@ type IUserContext = {
   ) => Promise<void>;
   logout: () => void;
   updateUser: (data: IUserUpdate) => Promise<void>;
-  users: IUser | null;
-  setUsers: React.Dispatch<React.SetStateAction<IUser | null>>;
+  user: IUser | null;
+  setUser: React.Dispatch<React.SetStateAction<IUser | null>>;
 };
 
 export const UserContext = createContext<IUserContext>({} as IUserContext);
 
 export const UserProvider = ({ children }: IUserProviderProps) => {
   const [loading, setLoading] = useState(false);
-  const [users, setUsers] = useState<IUser | null>(null);
+  const [user, setUser] = useState<IUser | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -53,7 +53,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      setUsers(response.data);
+      setUser(response.data);
     };
     Users();
   }, []);
@@ -65,7 +65,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
     try {
       setLoading(true);
       const response = await api.post("/users", data);
-      setUsers(response.data.user);
+      setUser(response.data.user);
       navigate("/login");
       setLoading(false)
     } catch (error) {
@@ -93,7 +93,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
 
   const logout = (): void => {
     localStorage.removeItem("@TOKEN");
-    setUsers(null);
+    setUser(null);
     navigate("/");
   };
 
@@ -103,7 +103,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
     try {
       const response = await api.patch(`/users/${id}`, data);
       api.defaults.headers.common.Authorization = `Bearer ${token}`;
-      setUsers(response.data);
+      setUser(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -117,8 +117,8 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
         registerUser,
         logout,
         updateUser,
-        users,
-        setUsers,
+        user,
+        setUser,
       }}
     >
       {children}

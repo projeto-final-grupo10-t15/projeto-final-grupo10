@@ -8,15 +8,15 @@ type CarContextProps = {
   setCars: React.Dispatch<React.SetStateAction<ICars[] | []>>;
   filters: ICars[] | null;
   setFilters: React.Dispatch<React.SetStateAction<ICars[] | null>>;
-  filterValues: number;
-  setFilterValues: React.Dispatch<React.SetStateAction<number>>;
+  filterValues: number | string;
+  setFilterValues: React.Dispatch<React.SetStateAction<number | string>>;
   ApplyFilterCar: () => void;
   createCar: (data: ICars) => void;
   updateCar: (id: number | null, data: IUpdateCar) => void;
   listMyCars: (id: number | null) => void;
   listAllCars: () => void;
   deleteCar: (id: number) => void;
-  
+  applyUpperCase: (text: string) => string;
 };
 
 const CarContext = createContext<CarContextProps>({} as CarContextProps);
@@ -24,18 +24,19 @@ const CarContext = createContext<CarContextProps>({} as CarContextProps);
 const CarProvider = ({ children }: iChildren) => {
   const [cars, setCars] = useState<ICars[] | []>([]);
   const [filters, setFilters] = useState<ICars[] | null>([]);
-  const [filterValues, setFilterValues] = useState(0);
-
-
+  const [filterValues, setFilterValues] = useState<number | string>(0);
 
   useEffect(() => {
     const Cars = async () => {
-      
       const response = await api.get<ICars[]>("/cars");
       setCars(response.data);
     };
     Cars();
   }, []);
+
+  const applyUpperCase = (text: string) => {
+    return text.charAt(0).toLocaleUpperCase() + text.slice(1);
+  };
 
   const ApplyFilterCar = () => {
     let filteredCars = cars;
@@ -114,7 +115,6 @@ const CarProvider = ({ children }: iChildren) => {
   const updateCar = async (id: number | null, data: IUpdateCar) => {
     const token = localStorage.getItem("@TOKEN");
     try {
-      
       const response = await api.patch(`/cars/${id}`, data, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -127,7 +127,7 @@ const CarProvider = ({ children }: iChildren) => {
           return car;
         }
       });
-  
+
       setCars(newCars);
     } catch (error) {
       console.log(error);
@@ -142,7 +142,7 @@ const CarProvider = ({ children }: iChildren) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      const removeCar = cars.filter((car)=> response.data.id != car.id)
+      const removeCar = cars.filter((car) => response.data.id != car.id);
       setCars(removeCar);
     } catch (error) {
       console.log(error);
@@ -164,7 +164,7 @@ const CarProvider = ({ children }: iChildren) => {
         listMyCars,
         listAllCars,
         deleteCar,
-        
+        applyUpperCase,
       }}
     >
       {children}
