@@ -47,7 +47,8 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
   useEffect(() => {
     const Users = async () => {
       const token = localStorage.getItem("@TOKEN");
-      const response = await api.get("/users", {
+      const id = localStorage.getItem("@ID");
+      const response = await api.get(`/users/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
