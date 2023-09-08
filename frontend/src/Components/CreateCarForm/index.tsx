@@ -14,11 +14,11 @@ export const CreateCarForm = () =>{
     })
     const submit: SubmitHandler<ICars> = (data:ICars) =>{
         if (data.year && data.mileage) {
-            // Converta "year" e "mileage" para números
             data.year = parseInt(data.year as string, 10);
             data.mileage = parseInt(data.mileage as string);
           }
         createCar(data)
+        
     }
     return(
         <CreateForm>
