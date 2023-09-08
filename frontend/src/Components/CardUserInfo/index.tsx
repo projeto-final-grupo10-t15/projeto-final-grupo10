@@ -14,7 +14,7 @@ const CardUserInfo = () => {
 
   const [openModal, setOpenModal] = useState<boolean>(false)
   const toggleModal = () => setOpenModal(!openModal)
-  const HiddenbuttonCreateAd = () => {
+  const HiddenTagsForAdm = () => {
     if (location.pathname === "/adm") return (location.pathname = "/adm");
   };
 
