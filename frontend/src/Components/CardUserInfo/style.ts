@@ -7,17 +7,30 @@ export const CardUserInfoContainer = styled.div`
   align-items: flex-start;
 
   background: var(--brand1);
-
   height: 10rem;
   font-family: Inter;
 
   .perfil__box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
     background-color: var(--grey10);
+    padding: 15px;
     border-radius: 0.25rem;
-    width: 86%;
+    width: 100%;
     height: 35rem;
     margin: 1.5rem;
     z-index: 0;
+
+    span {
+      width: 100px;
+      height: 100px;
+      background-color: var(--brand1);
+      border-radius: 100%;
+      color: var(--whiteFixed);
+      margin-left: 25px;
+    }
 
     .perfil__box--img {
       margin: 1rem;
@@ -38,12 +51,14 @@ export const CardUserInfoContainer = styled.div`
         border-radius: 0.25rem;
         background: var(--brand4);
       }
+      padding-left: 10px;
       display: flex;
       flex-direction: row;
       justify-content: space-around;
     }
     .perfil__box--info {
-      padding: 1rem;
+      padding-left: 30px;
+
       color: var(--gey2);
       font-family: Inter;
       font-size: 1rem;
