@@ -28,15 +28,14 @@ export const Card = () => {
         {cars.map((car) => (
           <StyledCardProduct key={car.id}>
             <>
-              {/* <img src={car.first_image} alt="photoCar" /> */}
-              <img src={"src/assets/carsTest.png"} alt="photoCar" />
+              <img src={car.first_image} alt="photoCar" />
               <h3>
                 {car.brand} - <span>{car.model}</span>
               </h3>
               <p>{car.description}</p>
             </>
             <StyledDivNameProfile>
-              <span>{users?.name}</span>
+              <span>{users?.name.charAt(0)}</span>
               <h4>{users?.name}</h4>
             </StyledDivNameProfile>
             <StyledDivInfosCars>

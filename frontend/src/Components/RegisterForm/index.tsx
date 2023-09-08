@@ -96,7 +96,7 @@ export const RegisterForm = () => {
                   label="Imagem de perfil"
                   placeholder="URL da imagem"
                   register={register("profile_image")}
-                  type="text"
+                  type="image"
                   id="profile_image"
                   disabled={loading}
                 />
