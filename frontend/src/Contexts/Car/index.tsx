@@ -14,6 +14,7 @@ type CarContextProps = {
   listMyCars: (id: number | null) => void;
   listAllCars: () => void;
   deleteCar: (id: number) => void;
+  
 };
 
 const CarContext = createContext<CarContextProps>({} as CarContextProps);
@@ -21,6 +22,8 @@ const CarContext = createContext<CarContextProps>({} as CarContextProps);
 const CarProvider = ({ children }: iChildren) => {
   const [cars, setCars] = useState<ICars[] | []>([]);
   const [filters, setFilters] = useState<ICars[] | null>([]);
+
+
 
   useEffect(() => {
     const Cars = async () => {
@@ -108,19 +111,21 @@ const CarProvider = ({ children }: iChildren) => {
   const updateCar = async (id: number | null, data: IUpdateCar) => {
     const token = localStorage.getItem("@TOKEN");
     try {
+      
       const response = await api.patch(`/cars/${id}`, data, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      const newAd = cars.map((car) => {
-        if (car.id === id) {
+      const newCars = cars.map((car) => {
+        if (car.id === response.data.id) {
           return response.data;
         } else {
           return car;
         }
       });
-      setCars(newAd);
+  
+      setCars(newCars);
     } catch (error) {
       console.log(error);
     }
@@ -134,7 +139,8 @@ const CarProvider = ({ children }: iChildren) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      setCars(response.data);
+      const removeCar = cars.filter((car)=> response.data.id != car.id)
+      setCars(removeCar);
     } catch (error) {
       console.log(error);
     }
@@ -153,6 +159,7 @@ const CarProvider = ({ children }: iChildren) => {
         listMyCars,
         listAllCars,
         deleteCar,
+        
       }}
     >
       {children}

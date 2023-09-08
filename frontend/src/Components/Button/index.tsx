@@ -1,7 +1,7 @@
 import { MediumOutlineButton, SmallOutlineButton } from "./styles";
 import { IButton } from "./types";
 
-export const ButtonOuline = ({ text, size }: IButton) => {
+export const ButtonOuline =  ({ text, size, onClick }: IButton) => {
   let StyledButton;
 
   switch (size) {
@@ -14,5 +14,5 @@ export const ButtonOuline = ({ text, size }: IButton) => {
     default:
       StyledButton = MediumOutlineButton;
   }
-  return <StyledButton>{text}</StyledButton>;
+  return <StyledButton onClick={()=> onClick && onClick()}>{text}</StyledButton>;
 };

@@ -3,9 +3,9 @@ import { z } from "zod";
 export const UpdateCarSchema = z.object({
   brand: z.string(),
   model: z.string(),
-  year: z.number(),
+  year: z.number().or(z.string()),
   fuel_type: z.string(),
-  mileage: z.number(),
+  mileage: z.number().or(z.string()),
   color: z.string(),
   FIPE_price: z.number().or(z.string()),
   price: z.number().or(z.string()),

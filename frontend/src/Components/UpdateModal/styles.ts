@@ -6,7 +6,7 @@ export const Container = styled.div`
   width: 100vw;
   height: 100vh;
   position: fixed;
-  z-index:1000;
+  z-index:2;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,6 +18,8 @@ export const Container = styled.div`
     padding: 20px;
     max-width: 375px;
     border-radius: 8px;
+    z-index: 3;
    
  }
+ 
 `
