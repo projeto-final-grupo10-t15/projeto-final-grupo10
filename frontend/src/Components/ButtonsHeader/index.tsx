@@ -9,16 +9,19 @@ const Buttons = () => {
   const location = useLocation();
   const HiddenbuttonsAdm = () => {
     if (
-      location.pathname === "/login" ||
-      location.pathname === "/register" ||
       location.pathname === "/" ||
-      location.pathname === "/carPage"
+      location.pathname === "/login" ||
+      location.pathname === "/register"
     )
-      return (location.pathname = "/user");
+      return (
+        location.pathname === "/login" ||
+        location.pathname === "/register" ||
+        location.pathname === "/"
+      );
   };
   return (
     <>
-      {HiddenbuttonsAdm() && (
+      {HiddenbuttonsAdm() ? (
         <>
           <StyledDivButton>
             <StyledLinkLogin to="/login" className="loginButton">
@@ -26,20 +29,15 @@ const Buttons = () => {
             </StyledLinkLogin>
             <StyledLinkRegister to="/register">Cadastrar</StyledLinkRegister>
           </StyledDivButton>
-          <StyledDivButton>
-            <StyledLinkLogin to="/login" className="loginButton">
-              Fazer login
-            </StyledLinkLogin>
-            <StyledLinkRegister to="/register">Cadastrar</StyledLinkRegister>
-          </StyledDivButton>
         </>
+      ) : (
+        <StyledDivButton>
+          <StyledInfoUserHeader to={"/adm"}>
+            <span>{user?.name.charAt(0)}</span>
+            <h4>{user?.name}</h4>
+          </StyledInfoUserHeader>
+        </StyledDivButton>
       )}
-      <StyledDivButton>
-        <StyledInfoUserHeader to={"/adm"}>
-          <span>{user?.name.charAt(0)}</span>
-          <h4>{user?.name}</h4>
-        </StyledInfoUserHeader>
-      </StyledDivButton>
     </>
   );
 };
