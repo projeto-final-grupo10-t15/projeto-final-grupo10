@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CardUserInfoContainer } from "./style";
 import { UserContext } from "../../Contexts/User";
 import { useLocation } from "react-router-dom";
@@ -8,27 +8,25 @@ import { CreateCarForm } from "../CreateCarForm";
 const CardUserInfo = () => {
   const { users } = useContext(UserContext);
   const location = useLocation();
-  const HiddenbuttonCreateAd = () => {
+  const [openModal, setOpenModal] = useState<boolean>(false);
+
+  const toggleModal = () => setOpenModal(!openModal);
+  const HiddenTagsForAdm = () => {
     if (location.pathname === "/adm") return (location.pathname = "/adm");
   };
-  function toggleModal(event: MouseEvent<HTMLButtonElement, MouseEvent>): void {
-    throw new Error("Function not implemented.");
-  }
 
   return (
     <CardUserInfoContainer>
       <div className="perfil__box">
-        <div className="perfil__box--img">
-          <img src={users?.profile_image} alt="perfil" />
-        </div>
+        <span>{users?.name}</span>
         <div className="perfil__name">
           <h3>{users?.name}</h3>
-          <p></p>
+          {HiddenTagsForAdm() && <p>Anunciante</p>}
         </div>
         <div className="perfil__box--info">
           <p>{users?.description}</p>
         </div>
-        {HiddenbuttonCreateAd() && (
+        {HiddenTagsForAdm() && (
           <div className="containerBtn">
             <button onClick={toggleModal}>Criar Anuncio</button>
           </div>

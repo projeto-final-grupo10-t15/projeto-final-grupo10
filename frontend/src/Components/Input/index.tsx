@@ -37,6 +37,8 @@ export const InputRange = ({
   max,
   min,
   src,
+  value,
+  onChange
 }: IInputProps) => (
   <StyledInputRange>
     <label htmlFor={id}>{label}</label>
@@ -46,6 +48,8 @@ export const InputRange = ({
       max={max}
       min={min}
       src={src}
+      value={value}
+      onChange={onChange}
       {...register}
       placeholder={placeholder}
     />
