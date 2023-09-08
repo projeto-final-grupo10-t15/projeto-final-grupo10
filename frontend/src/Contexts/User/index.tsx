@@ -67,6 +67,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
       const response = await api.post("/users", data);
       setUser(response.data.user);
       navigate("/login");
+      setLoading(false)
     } catch (error) {
       console.log(error);
     }
