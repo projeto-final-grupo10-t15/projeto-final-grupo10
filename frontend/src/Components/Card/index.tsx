@@ -16,8 +16,8 @@ import { UpdateModal } from "../UpdateModal";
 import { UpdateCarForm } from "../UpdateCarForm";
 
 export const Card = () => {
-  const { cars, applyUpperCase } = useContext(CarContext);
-  const { users } = useContext(UserContext);
+  const { cars } = useContext(CarContext);
+  const { user } = useContext(UserContext);
   const location = useLocation();
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [selectedCarId, setSelectedCarId] = useState(-1);
@@ -53,8 +53,8 @@ export const Card = () => {
               <p>{car.description}</p>
             </>
             <StyledDivNameProfile>
-              <span>{users?.name.charAt(0)}</span>
-              <h4>{users?.name}</h4>
+              <span>{user?.name.charAt(0)}</span>
+              <h4>{user?.name}</h4>
             </StyledDivNameProfile>
             <StyledDivInfosCars>
               <StyledDivChildInfosCar>

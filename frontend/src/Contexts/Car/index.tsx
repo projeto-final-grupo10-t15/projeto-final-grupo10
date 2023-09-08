@@ -8,8 +8,8 @@ type CarContextProps = {
   setCars: React.Dispatch<React.SetStateAction<ICars[] | []>>;
   filters: ICars[] | null;
   setFilters: React.Dispatch<React.SetStateAction<ICars[] | null>>;
-  filterValues: number;
-  setFilterValues: React.Dispatch<React.SetStateAction<number>>;
+  filterValues: number | string;
+  setFilterValues: React.Dispatch<React.SetStateAction<number | string>>;
   ApplyFilterCar: () => void;
   createCar: (data: ICars) => void;
   updateCar: (id: number | null, data: IUpdateCar) => void;
@@ -24,7 +24,7 @@ const CarContext = createContext<CarContextProps>({} as CarContextProps);
 const CarProvider = ({ children }: iChildren) => {
   const [cars, setCars] = useState<ICars[] | []>([]);
   const [filters, setFilters] = useState<ICars[] | null>([]);
-  const [filterValues, setFilterValues] = useState(0);
+  const [filterValues, setFilterValues] = useState<number | string>(0);
 
   useEffect(() => {
     const Cars = async () => {

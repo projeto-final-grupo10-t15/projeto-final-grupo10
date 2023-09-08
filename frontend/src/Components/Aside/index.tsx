@@ -23,7 +23,7 @@ export const AsideFilter = () => {
 
   useEffect(() => {
     const filtered = cars.filter((car) => {
-      if (car.mileage <= filterValues) {
+      if (+car.mileage <= +filterValues) {
         return true;
       }
       return false;

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { styled } from "styled-components";
 
 export const StyledDivButton = styled.div`
@@ -63,5 +64,33 @@ export const StyledDivButton = styled.div`
     .registerButton {
       width: fit-content;
     }
+  }
+`;
+
+export const StyledInfoUserHeader = styled(Link)`
+  display: flex;
+  height: 3rem;
+  padding: 0.75rem 1.2rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.625rem;
+  color: var(--grey2);
+  background: var(--grey10);
+  margin: auto;
+  transform: scale(0.9);
+
+  span {
+    width: 32px;
+    height: 32px;
+    background-color: var(--brand1);
+    border-radius: 100%;
+    color: var(--whiteFixed);
+    margin-left: 25px;
+    text-align: center;
+    padding: 5px 0;
+  }
+
+  &:hover {
+    transform: scale(1);
   }
 `;

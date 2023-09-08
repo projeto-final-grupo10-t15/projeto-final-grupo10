@@ -70,6 +70,7 @@ export const CardUserInfoContainer = styled.div`
       padding: 1rem;
     }
     button {
+      font-size: 14px;
       margin-top: 4%;
       height: 3rem;
       padding: 0.75rem 1.75rem;
@@ -85,7 +86,6 @@ export const CardUserInfoContainer = styled.div`
 
     button:hover {
       border: 2px solid var(--brand-brand-1, #4529e6);
-      font-weight: 500;
     }
   }
 
