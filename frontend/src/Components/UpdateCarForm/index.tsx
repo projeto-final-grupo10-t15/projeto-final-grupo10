@@ -2,36 +2,63 @@ import { SubmitHandler, useForm } from "react-hook-form"
 import { IUpdateCar } from "./interfaces"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { UpdateCarSchema } from "./schema"
-import { useContext, useState } from "react"
+import { useContext } from "react"
 import { CarContext } from "../../Contexts/Car"
 import { Input } from "../Input"
 import { UpdateForm } from "./styles"
-import { UpdateModal } from "../UpdateModal"
-
-
+import { api } from "../../services/api"
+import { ICars } from "../../Contexts/Car/interfaces"
 
 
 export const UpdateCarForm = ({id}:{id:number}) =>{
-    const {updateCar, deleteCar} = useContext(CarContext)
-    const [showDeleteModal, setShowDeleteModal] = useState(false);
+    const {updateCar, deleteCar, setCars} = useContext(CarContext)
     const {register, handleSubmit, formState: { errors }} = useForm<IUpdateCar>({
         resolver: zodResolver(UpdateCarSchema)
-    })
-
-    const openDeleteModal = () => {
-        setShowDeleteModal(true);
-      };
-      
-      const closeDeleteModal = () => {
-        setShowDeleteModal(false);
-      };
-      
-
-    const submit: SubmitHandler<IUpdateCar> = (data) =>{
-        updateCar(id,data)
+    }) 
+    const submit: SubmitHandler<IUpdateCar> = async (data) =>{
+            const newData: IUpdateCar = {}
+            if(data.FIPE_price !== ""){
+                newData.FIPE_price = data.FIPE_price
+            }
+            if(data.brand !== ""){
+                newData.brand = data.brand
+            }
+            if(data.color !== ""){
+                newData.color = data.color
+            }
+            if(data.cover_image!== ""){
+                newData.cover_image = data.cover_image
+            }
+            if(data.description !==""){
+                newData.description = data.description
+            }
+            if(data.first_image !== ""){
+                newData.first_image = data.first_image
+            }
+            if(data.fuel_type !== ""){
+                newData.fuel_type = data.fuel_type
+            }
+            if(data.mileage !== ""){
+                newData.mileage = data.mileage
+            }
+            if(data.model !== ""){
+                newData.model = data.model
+            }
+            if(data.price !== ""){
+                newData.price = data.price
+            }
+            if(data.year !== ""){
+                newData.year = data.year
+            }
+        updateCar(id,newData)
+        const newCars = await api.get<ICars[]>('/cars')
+        
+        setCars(newCars.data)
     }
-    const handleDelete = () =>{
+    const handleDelete = async () =>{
         deleteCar(id)
+        const newCars = await api.get<ICars[]>('/cars')
+        setCars(newCars.data)
     }
     return(
         <UpdateForm>
@@ -138,25 +165,11 @@ export const UpdateCarForm = ({id}:{id:number}) =>{
                         id="first_image"
                         />
                 <div className="btn__box">
-                    <button className="deleteBtn" type="submit" onClick={openDeleteModal}>Excluir anúncio</button>
+                    <button className="deleteBtn" type="button" onClick={handleDelete}>Excluir anúncio</button>
                     <button className="editBtn" type="submit">Salvar alterações</button>
 
                 </div>
             </form>
-            {showDeleteModal && (
-            <UpdateModal toggleModal={closeDeleteModal}>
-                <div>
-                    <p>Tem certeza de que deseja remover este anúncio?</p>
-                    <p>
-                            Essa ação não pode ser desfeita. 
-                            Isso excluirá permanentemente sua conta
-                            e removerá seus dados de nossos servidores
-                    </p>
-                    <button onClick={handleDelete}>Sim, excluir anúncio</button>
-                    <button onClick={closeDeleteModal}>Cancelar</button>
-                </div>
-            </UpdateModal>
-            )}
 
         </UpdateForm>
     )

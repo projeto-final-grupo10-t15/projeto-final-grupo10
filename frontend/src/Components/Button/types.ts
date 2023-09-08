@@ -1,5 +1,5 @@
-export interface IButton {
+export interface IButton<T = void> {
   text: string;
   size: string;
-  onClick: () => void
+  onClick?: (arg: T) => void
 }
