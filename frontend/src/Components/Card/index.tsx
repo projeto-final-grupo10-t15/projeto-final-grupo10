@@ -16,7 +16,7 @@ import { UpdateModal } from "../UpdateModal";
 import { UpdateCarForm } from "../UpdateCarForm";
 
 export const Card = () => {
-  const { cars } = useContext(CarContext);
+  const { cars, applyUpperCase } = useContext(CarContext);
   const { user } = useContext(UserContext);
   const location = useLocation();
   const [openModal, setOpenModal] = useState<boolean>(false);
