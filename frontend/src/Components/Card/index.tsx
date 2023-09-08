@@ -16,29 +16,37 @@ import { UpdateModal } from "../UpdateModal";
 import { UpdateCarForm } from "../UpdateCarForm";
 
 export const Card = () => {
-  const { cars } = useContext(CarContext);
+  const { cars, applyUpperCase } = useContext(CarContext);
   const { users } = useContext(UserContext);
   const location = useLocation();
-  const [openModal, setOpenModal] = useState<boolean>(false)
-  const [selectedCarId, setSelectedCarId] = useState(-1)
+  const [openModal, setOpenModal] = useState<boolean>(false);
+  const [selectedCarId, setSelectedCarId] = useState(-1);
 
-  const toggleModal = <T extends number | string = number | string>(carId?: T) => {
-    setSelectedCarId(carId as number )
-    setOpenModal(!openModal)
-
-  }
+  const toggleModal = <T extends number | string = number | string>(
+    carId?: T
+  ) => {
+    setSelectedCarId(carId as number);
+    setOpenModal(!openModal);
+  };
 
   const HiddenbuttonsAdm = () => {
     if (location.pathname === "/adm") return (location.pathname = "/adm");
   };
 
+  const upperCaseCars = cars.map((car) => ({
+    ...car,
+    brand: applyUpperCase(car.brand),
+    model: applyUpperCase(car.model),
+    description: applyUpperCase(car.description),
+  }));
+
   return (
     <StyledSectionCars>
       <StyledListCars>
-        {cars.map((car) => (
+        {upperCaseCars.map((car) => (
           <StyledCardProduct key={car.id}>
             <>
-              <img src={car.first_image} alt="photoCar" />
+              <img src="src/assets/carsTest.png" alt="photoCar" />
               <h3>
                 {car.brand} - <span>{car.model}</span>
               </h3>
@@ -57,13 +65,29 @@ export const Card = () => {
             </StyledDivInfosCars>
             {HiddenbuttonsAdm() && (
               <DivButtonsAdm>
-                <ButtonOuline text="Editar" size="small" onClick={() => {if(car.id){toggleModal(car.id)}}}></ButtonOuline>
-                <ButtonOuline text="Ver detalhes" size="medium" onClick={()=>{}}></ButtonOuline>
+                <ButtonOuline
+                  text="Editar"
+                  size="small"
+                  onClick={() => {
+                    if (car.id) {
+                      toggleModal(car.id);
+                    }
+                  }}
+                ></ButtonOuline>
+                <ButtonOuline
+                  text="Ver detalhes"
+                  size="medium"
+                  onClick={() => {}}
+                ></ButtonOuline>
               </DivButtonsAdm>
             )}
           </StyledCardProduct>
         ))}
-      {openModal && (<UpdateModal toggleModal={toggleModal}><UpdateCarForm id={selectedCarId}/></UpdateModal>)}
+        {openModal && (
+          <UpdateModal toggleModal={toggleModal}>
+            <UpdateCarForm id={selectedCarId} />
+          </UpdateModal>
+        )}
       </StyledListCars>
     </StyledSectionCars>
   );

@@ -22,6 +22,19 @@ export const StyledInput = styled.fieldset`
     padding: 0.3rem;
     transform: scale(1);
     cursor: pointer;
+    outline: none;
+  }
+
+  input[type="image"] {
+    border-radius: 4px;
+    border: 2px solid var(--grey7);
+    width: 100%;
+    height: 48px;
+    padding: 0;
+    margin: 0;
+    transform: scale(1);
+    cursor: pointer;
+    outline: none;
   }
 
   :focus {

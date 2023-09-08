@@ -6,6 +6,7 @@ import { Input } from "../Input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { RegisterData, RegisterSchema } from "../../pages/Register/schema";
 import { StyledRegisterForm } from "./styles";
+import { StyledLoading } from "../Loading";
 
 export const RegisterForm = () => {
   const { registerUser, setLoading, loading } = useContext(UserContext);
@@ -31,7 +32,9 @@ export const RegisterForm = () => {
   return (
     <>
       {loading ? (
-        <div>Carregando...</div>
+        <StyledLoading>
+          <span>Carregando...</span>
+        </StyledLoading>
       ) : (
         <>
           <StyledRegisterForm>

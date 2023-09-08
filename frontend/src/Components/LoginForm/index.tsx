@@ -7,6 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { LoginData, LoginSchema } from "../../pages/Login/schema";
 import { Link } from "react-router-dom";
 import { StyledLoginForm } from "./styles";
+import { StyledLoading } from "../Loading";
 
 export const LoginForm = () => {
   const { loginUser, loading, setLoading } = useContext(UserContext);
@@ -24,7 +25,9 @@ export const LoginForm = () => {
   return (
     <>
       {loading ? (
-        <div>Carregando...</div>
+        <StyledLoading>
+          <span>Carregando...</span>
+        </StyledLoading>
       ) : (
         <>
           <StyledLoginForm>
