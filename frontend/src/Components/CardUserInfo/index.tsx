@@ -9,7 +9,7 @@ import { UpdateModal } from "../UpdateModal";
 import { CreateCarForm } from "../CreateCarForm";
 
 const CardUserInfo = () => {
-  const { users } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const location = useLocation();
 
   const [openModal, setOpenModal] = useState<boolean>(false)
@@ -21,13 +21,13 @@ const CardUserInfo = () => {
   return (
     <CardUserInfoContainer>
       <div className="perfil__box">
-        <span>{users?.name}</span>
+        <span>{user?.name}</span>
         <div className="perfil__name">
-          <h3>{users?.name}</h3>
+          <h3>{user?.name}</h3>
           {HiddenTagsForAdm() && <p>Anunciante</p>}
         </div>
         <div className="perfil__box--info">
-          <p>{users?.description}</p>
+          <p>{user?.description}</p>
         </div>
         {HiddenTagsForAdm() && (
           <div className="containerBtn">
