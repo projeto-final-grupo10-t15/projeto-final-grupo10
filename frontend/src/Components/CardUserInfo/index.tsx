@@ -1,4 +1,7 @@
+
+
 import { useContext, useState } from "react";
+
 import { CardUserInfoContainer } from "./style";
 import { UserContext } from "../../Contexts/User";
 import { useLocation } from "react-router-dom";
@@ -8,10 +11,10 @@ import { CreateCarForm } from "../CreateCarForm";
 const CardUserInfo = () => {
   const { users } = useContext(UserContext);
   const location = useLocation();
-  const [openModal, setOpenModal] = useState<boolean>(false);
 
-  const toggleModal = () => setOpenModal(!openModal);
-  const HiddenTagsForAdm = () => {
+  const [openModal, setOpenModal] = useState<boolean>(false)
+  const toggleModal = () => setOpenModal(!openModal)
+  const HiddenbuttonCreateAd = () => {
     if (location.pathname === "/adm") return (location.pathname = "/adm");
   };
 
